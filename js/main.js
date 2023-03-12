@@ -2,9 +2,18 @@ let width = window.innerWidth;
 let height = window.innerHeight;
 let blockWidth = 80;
 let blockHeight = 20;
-let dX = 10;
-let dY = 10;
+let dX = 3;
+let dY = 3;
 let deltaTimer = 16;
+
+let x = (width*5)/100;
+let y = ((height*90)/100)-32;
+let vX = 0;
+let vY = 0;
+
+let timer = -1;
+
+let keys = [];  // Liste des touches actives
 
 // first we need to create a stage
 let stage = new Konva.Stage({
@@ -40,15 +49,97 @@ let rect2 = new Konva.Rect({
 let player = new Image();
 player.onload = function () {
     let playerImg = new Konva.Image({
-        x: (width*5)/100,
-        y: ((height*90)/100)-player.width,
+        x: x,
+        y: y,
         image: player,
         width: 32,
         height: 32,
     });
     layer.add(playerImg);
 
+    window.addEventListener('keydown', moveThePlayer);
+    window.addEventListener('keyup', stopThePlayer);
 
+    function moveThePlayer(e) {
+        if (timer == -1) {
+            timer = setInterval(update, deltaTimer);
+            update();
+        }
+        let index = keys.indexOf(event.key);
+        if (index > -1) {   // Touche déjà active, on ne fait rien
+            return;
+    }
+        else {
+            keys.push(event.key);
+            switch (event.key) {
+                case "ArrowRight":
+                    vX += dX;
+                    break;
+                case "ArrowLeft":
+                    vX -= dX;
+                    break;
+                case "ArrowUp":
+                    vY -= dY;
+                    break;
+                case "ArrowDown":
+                    vY += dY;
+                    break;
+            }
+        }
+    }
+
+        function stopThePlayer(event){
+            let index = keys.indexOf(event.key);
+            if (index > -1) {
+                keys.splice(index, 1);
+        }
+        if (keys.length == 0) {
+            clearInterval(timer);
+            timer = -1;
+        }
+            switch (event.key) {
+                case "ArrowRight":
+                    vX -= dX;
+                    break;
+                case "ArrowLeft":
+                    vX += dX;
+                    break;
+                case "ArrowUp":
+                    vY += dY;
+                    break;
+                case "ArrowDown":
+                    vY -= dY;
+                    break;
+            }
+    }
+
+
+    //Function to update the player position
+
+    /*
+    Idées pour faire fonctionner la gravité :
+    utiliser les coordonnées de la plateforme pour détecter si le joueur est dessus pour cela on utilise le x et y du joueur et on compare avec le x et y de la plateforme sauf que le x de platforme ne correspond au x du joueur que à son spawn, il faut donc trouver un moyen d'avoir la longeur de la platforme.
+    J'écris ça à 10h du soir donc je sais pas si c'est clair mais je vais essayer de faire ça demain.
+     */
+
+    function update() {
+        x += vX;
+        y += vY;
+        playerImg.x(x);
+        playerImg.y(y);
+        //if the player not on a block, apply gravity
+        console.log(y + " y");
+        console.log(x + " x");
+        console.log(playerImg.y() + " playerImg.y()");
+        console.log(playerImg.x() + " playerImg.x()");
+        console.log(rect1.y()-playerImg.height() + " rect1.y()-playerImg.height()");
+        console.log(rect1.x() + " rect1.x()");
+        if ((playerImg.y() != rect1.y() && playerImg.x() != rect1.x()-playerImg.width()) || (playerImg.y() != rect2.y()-playerImg.y() && playerImg.x() != rect2.x()-playerImg.x())) {
+            playerImg.y(playerImg.y()+10);
+            console.log('gravity');
+        }
+        layer.draw();
+    }
 
 
     /*let jump = function () {
