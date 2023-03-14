@@ -1,0 +1,180 @@
+body{
+    margin: 0%;
+    background-color: #333;
+    color: white;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+main{
+    position: relative;
+}
+
+.rythm{
+    position: absolute;
+    width: 320px;
+    height: 160px;
+    border: white solid 4px;
+}
+
+.G>.rythm{
+    border-right: none;
+}
+
+.D>.rythm{
+    border-left: none;
+}
+
+.rythm#GH{
+    top: 4%;
+    left: 4%;
+}
+
+.rythm#DH{
+    right: 4%;
+    top: 4%;
+}
+
+.rythm#DB{
+    right: 4%;
+    bottom: 4%;
+}
+
+.rythm#GB{
+    bottom: 4%;
+    left: 4%;
+}
+
+.zone{
+    position: absolute;
+    width: 152px;
+    height: 152px;
+    border: red solid 4px;
+    border-radius: 100%;
+}
+
+.G>.rythm>.zone{
+    left: 0%;
+}
+
+.D>.rythm>.zone{
+    right: 0%;
+}
+
+.note{
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    background-color: red;
+    border: red solid 0px;
+    border-radius: 100%;
+    opacity: 0%;
+}
+
+.G>.rythm>.partition>.note{
+    left: 100%;
+    animation: bouge_noteG 2s linear;
+}
+
+.D>.rythm>.partition>.note{
+    right: 100%;
+    animation: bouge_noteD 2s linear;
+}
+
+#n1-1{
+    animation-delay: 0s;
+}
+
+#n1-2{
+    animation-delay: 1s;
+}
+
+#n1-3{
+    animation-delay: 2s;
+}
+
+#n2-1{
+    animation-delay: 3s;
+}
+
+#n2-2{
+    animation-delay: 4s;
+}
+
+#n2-3{
+    animation-delay: 5s;
+}
+
+#n3-1{
+    animation-delay: 6s;
+}
+
+#n3-2{
+    animation-delay: 7s;
+}
+
+#n3-3{
+    animation-delay: 8s;
+}
+
+#n4-1{
+    animation-delay: 9s;
+}
+
+#n4-2{
+    animation-delay: 10s;
+}
+
+#n4-3{
+    animation-delay: 11s;
+}
+
+.partition{
+    height: 160px;
+    width: 768px;
+    position: absolute;
+    z-index: -1;
+}
+
+.G>.rythm>.partition{
+    left: 0%;
+}
+
+.D>.rythm>.partition{
+    right: 0%;
+}
+
+.score{
+    font-size: 64px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-100%);
+}
+
+.message{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@keyframes bouge_noteG{
+    25%{opacity: 0%;}
+    70%{opacity: 100%;}
+    100%{
+        left: 0%; 
+        transform: translateX(-100%);
+        opacity: 100%;
+    }
+}
+
+@keyframes bouge_noteD{
+    25%{opacity: 0%;}
+    70%{opacity: 100%;}
+    100%{
+        right: 0%; 
+        transform: translateX(100%);
+        opacity: 100%;
+    }
+}
