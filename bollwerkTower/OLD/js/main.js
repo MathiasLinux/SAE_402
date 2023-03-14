@@ -110,6 +110,10 @@ player.onload = function () {
                 case "ArrowDown":
                     vY -= dY;
                     break;
+                case " ":
+                    detect();
+                    break;
+
             }
     }
 
@@ -128,18 +132,50 @@ player.onload = function () {
         playerImg.x(x);
         playerImg.y(y);
         //if the player not on a block, apply gravity
-        console.log(y + " y");
-        console.log(x + " x");
-        console.log(playerImg.y() + " playerImg.y()");
-        console.log(playerImg.x() + " playerImg.x()");
-        console.log(rect1.y()-playerImg.height() + " rect1.y()-playerImg.height()");
-        console.log(rect1.x() + " rect1.x()");
-        if ((playerImg.y() != rect1.y() && playerImg.x() != rect1.x()-playerImg.width()) || (playerImg.y() != rect2.y()-playerImg.y() && playerImg.x() != rect2.x()-playerImg.x())) {
-            playerImg.y(playerImg.y()+10);
+        //update();
+    }
+    function gravity() {
+        //if the player is on a block, stop the gravity
+        if (!(playerImg.y() == rect1.y()-playerImg.height() && playerImg.x() <= rect1.x()+rect1.width() && playerImg.x() >= rect1.x()-31)) {
+            playerImg.y(playerImg.y()+100);
+            y = y + 100;
             console.log('gravity');
+            //move();
         }
+
+
+        layer.draw();
+        //gravity();
+    }
+    setInterval(gravity, 1000)
+
+    //create an accurate jump function
+    function jump() {
+        playerImg.y(playerImg.y()-100);
+        y = y - 100;
         layer.draw();
     }
+    //detect if the player is on a block and if so allow them to jump
+    function detect() {
+        if (playerImg.y() == rect1.y()-playerImg.height() && playerImg.x() <= rect1.x()+rect1.width() && playerImg.x() >= rect1.x()-31) {
+            jump();
+        }
+    }
+
+    //if the player is at less than 100px from a block, move them to the block
+    /*function move() {
+        if (playerImg.y() < rect1.y()-100) {
+            playerImg.y(rect1.y()-playerImg.height());
+            x = x + 10;
+            console.log('move first if')
+        }
+        if (playerImg.y() > rect1.y()+100 && !(playerImg.y() == rect1.y()-playerImg.height() && playerImg.x() <= rect1.x()+rect1.width() && playerImg.x() >= rect1.x()-31)) {
+            playerImg.y(rect1.y()-playerImg.height());
+            y=y - playerImg.height();
+            console.log('move second if')
+        }
+        layer.draw();
+    }*/
 
 
     /*let jump = function () {
