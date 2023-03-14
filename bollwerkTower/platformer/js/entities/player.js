@@ -20,6 +20,8 @@ class PlayerEntity extends me.Entity {
 
         this.multipleJump = 1;
 
+        this.jumpCount = 0;
+
         // set the viewport to follow this renderable on both axis, and enable damping
         me.game.viewport.follow(this, me.game.viewport.AXIS.BOTH, 0.1);
 
@@ -54,14 +56,11 @@ class PlayerEntity extends me.Entity {
 
         // set a renderable
         this.renderable = game.texture.createAnimationFromName([
-            "walk0001.png", "walk0002.png", "walk0003.png",
-            "walk0004.png", "walk0005.png", "walk0006.png",
-            "walk0007.png", "walk0008.png", "walk0009.png",
-            "walk0010.png", "walk0011.png"
+            "man.png",
         ]);
 
         // define a basic walking animatin
-        this.renderable.addAnimation ("walk",  [{ name: "walk0001.png", delay: 100 }, { name: "walk0002.png", delay: 100 }, { name: "walk0003.png", delay: 100 }]);
+        this.renderable.addAnimation ("walk",  [{ name: "man.png", delay: 100 }]);
         // set as default
         this.renderable.setCurrentAnimation("walk");
 
@@ -82,9 +81,11 @@ class PlayerEntity extends me.Entity {
             this.renderable.flipX(false);
         }
 
-        if (me.input.isKeyPressed("jump")) {
+        if (me.input.isKeyPressed("jump") && this.jumpCount < 2) {
             this.body.jumping = true;
             if (this.multipleJump <= 2) {
+                this.jumpCount++;
+                console.log(this.jumpCount);
                 // easy "math" for double jump
                 this.body.force.y = -this.body.maxVel.y * this.multipleJump++;
                 me.audio.stop("jump");
@@ -98,6 +99,10 @@ class PlayerEntity extends me.Entity {
             else if (this.body.falling && this.multipleJump < 2) {
                 // reset the multipleJump flag if falling
                 this.multipleJump = 2;
+            }
+            //check if the player is in the air
+            if (this.body.vel.y == 0) {
+                this.jumpCount = 0;
             }
         }
 

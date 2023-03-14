@@ -3,8 +3,8 @@ import * as me from 'https://esm.run/melonjs@13';
 import game from './game.js';
 import resources from './resources.js';
 import PlayerEntity from './entities/player.js';
-import { SlimeEnemyEntity, FlyEnemyEntity } from './entities/enemies.js';
-import CoinEntity from './entities/coin.js';
+//import { SlimeEnemyEntity, FlyEnemyEntity } from './entities/enemies.js';
+//import CoinEntity from './entities/coin.js';
 import PlayScreen from './screens/play.js';
 
 
