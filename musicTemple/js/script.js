@@ -1,18 +1,16 @@
 let w = window.innerWidth;
 let h = window.innerHeight;
 
+let musicDelay = [[0,1,2],[3,4,5],[6,7,8],[9,10,11]];
+
 document.querySelector("main").style.width=w+"px";
 document.querySelector("main").style.height=h+"px";
 
-let widthNote = document.querySelector(".note").offsetWidth;
+let oneClick = [false,false,false,false];
 
-let widthPartition = document.querySelector(".partition").offsetWidth;
+let zone = document.querySelectorAll(".zone");
 
-let oneClick = false;
-
-let zone = document.querySelectorAll(".zone")
-
-let id = [1,1,1,1]
+let id = [1,1,1,1];
 
 let note1 = "";
 let note2 = "";
@@ -26,50 +24,81 @@ function resizeWindow(){
     document.querySelector("main").style.width=w+"px";
 }
 
-function defNote(){
-    note1 = document.querySelector("#n1-"+id[0])
-    note2 = document.querySelector("#n2-"+id[1])
-    note3 = document.querySelector("#n3-"+id[2])
-    note4 = document.querySelector("#n4-"+id[3])
+function addNote(idRythm,idNote,delay){
+    document.querySelector(".rythm#"+idRythm+">.partition").innerHTML+="<div class='note' id='"+idNote+"'></div>";
+    document.querySelector(".note#"+idNote).style.animationDelay = delay+"s";
 }
 
-function toucheZone(){
-    if(oneClick==false){
-        oneClick = true;
-        switch (this.id) {
-            case "GH":
-                getCoord(note1);
-                break;
-            case "GB":
-                getCoord(note2);
-                break;
-            case "DH":
-                getCoord(note3);
-                break;
-            case "DB":
-                getCoord(note4);
-                break;
-            default:
-                break;
+function createMusic(musicDelay){
+    for(let i=0; i<=3; i++){
+        for(let j=0; j<musicDelay[i].length; j++){
+            switch (i) {
+                case 0:
+                    addNote("GH",("n"+(i+1)+"-"+(j+1)),musicDelay[i][j])
+                    break;
+                case 1:
+                    addNote("GB",("n"+(i+1)+"-"+(j+1)),musicDelay[i][j])
+                    break;
+                case 2:
+                    addNote("DH",("n"+(i+1)+"-"+(j+1)),musicDelay[i][j])
+                    break;
+                case 3:
+                    addNote("DB",("n"+(i+1)+"-"+(j+1)),musicDelay[i][j])
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }
 
-function getCoord(note){
+function defNote(){
+    note1 = document.querySelector("#n1-"+id[0]);
+    note2 = document.querySelector("#n2-"+id[1]);
+    note3 = document.querySelector("#n3-"+id[2]);
+    note4 = document.querySelector("#n4-"+id[3]);
+}
+
+function toucheZone(){
+    switch (this.id) {
+        case "GH":
+            getCoord(note1,0);
+            break;
+        case "GB":
+            getCoord(note2,1);
+            break;
+        case "DH":
+            getCoord(note3,2);
+            break;
+        case "DB":
+            getCoord(note4,3);
+            break;
+        default:
+            break;
+    }
+}
+
+function getCoord(note,oC){
     // console.log(note);
-    let partition = note.id.split("-")[0]
-    getScore(note.offsetLeft,partition);
+    if(oneClick[oC]==false){
+        // console.log(oneClick[oC])
+        oneClick[oC]=true;
+        let partition = note.id.split("-")[0];
+        getScore(note.offsetLeft,partition);
+    }
 }
 
 function getScore(x,partition){
     console.log(x)
     // console.log(partition)
+    let perfect = widthNote*12.5/100;
+    let good = widthNote*25/100;
     if(partition == "n1" || partition == "n2"){
-        if(x>(widthNote-20) && x<(widthNote+20)){
+        if(x>(widthNote-perfect) && x<(widthNote+perfect)){
             document.querySelector(".message").innerHTML="<h1>Perfect</h1>";
             score+=100;
         }
-        else if(x>(widthNote-40) && x<(widthNote+40)){
+        else if(x>(widthNote-good) && x<(widthNote+good)){
             document.querySelector(".message").innerHTML="<h2>Good</h2>";
             score+=50;
         }
@@ -77,26 +106,21 @@ function getScore(x,partition){
             document.querySelector(".message").innerHTML="<h3>Miss</h3>";
     }
     else{
-        if(x>(widthPartition-widthNote*2-20) && x<(widthPartition-widthNote*2+20)){
+        if(x>(widthPartition-widthNote*2-perfect) && x<(widthPartition-widthNote*2+perfect)){
             document.querySelector(".message").innerHTML="<h1>Perfect</h1>";
             score+=100;
         } 
-        else if(x>(widthPartition-widthNote*2-40) && x<(widthPartition-widthNote*2+40)){
+        else if(x>(widthPartition-widthNote*2-good) && x<(widthPartition-widthNote*2+good)){
             document.querySelector(".message").innerHTML="<h2>Good</h3>";
             score+=50;
-        } 
+        }
         else
-        document.querySelector(".message").innerHTML="<h3>Miss</h3>";
+            document.querySelector(".message").innerHTML="<h3>Miss</h3>";
     }
-    showScore(score)
-}
-
-function showScore(score){
     document.querySelector(".score").innerText=score;
 }
 
 function getNote(){
-    oneClick = false
     let partition = this.id.split("-")[0]
     // console.log(partition)
     switch ((partition)) {
@@ -118,6 +142,7 @@ function getNote(){
 }
 
 function noteSuivante(n) {
+    oneClick[n]=false;
     id[n]+=1;
     // console.log(id[n]);
     defNote();
@@ -125,7 +150,13 @@ function noteSuivante(n) {
 
 window.addEventListener("resize", resizeWindow)
 
+createMusic(musicDelay);
+
 defNote();
+
+let widthNote = document.querySelector(".note").offsetWidth;
+
+let widthPartition = document.querySelector(".partition").offsetWidth;
 
 zone.forEach(z =>{
     z.addEventListener("click",toucheZone)

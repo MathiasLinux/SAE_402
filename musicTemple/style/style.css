@@ -4,6 +4,7 @@ body{
     color: white;
     overflow: hidden;
     font-family: Arial, Helvetica, sans-serif;
+    height: 100vh;
 }
 
 main{
@@ -79,54 +80,6 @@ main{
 .D>.rythm>.partition>.note{
     right: 100%;
     animation: bouge_noteD 2s linear;
-}
-
-#n1-1{
-    animation-delay: 0s;
-}
-
-#n1-2{
-    animation-delay: 1s;
-}
-
-#n1-3{
-    animation-delay: 2s;
-}
-
-#n2-1{
-    animation-delay: 3s;
-}
-
-#n2-2{
-    animation-delay: 4s;
-}
-
-#n2-3{
-    animation-delay: 5s;
-}
-
-#n3-1{
-    animation-delay: 6s;
-}
-
-#n3-2{
-    animation-delay: 7s;
-}
-
-#n3-3{
-    animation-delay: 8s;
-}
-
-#n4-1{
-    animation-delay: 9s;
-}
-
-#n4-2{
-    animation-delay: 10s;
-}
-
-#n4-3{
-    animation-delay: 11s;
 }
 
 .partition{
