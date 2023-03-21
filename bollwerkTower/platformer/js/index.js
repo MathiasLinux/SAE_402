@@ -15,7 +15,13 @@ import PlayScreen from './screens/play.js';
 export default function onload() {
 
     // init the video
-    if (!me.video.init(800, 600, {parent : "screen", scaleMethod : "flex-width", renderer : me.video.AUTO, preferWebGL1 : false, subPixel : false })) {
+    if (!me.video.init(400, 300, {
+        parent: "screen",
+        scaleMethod: "flex-width",
+        renderer: me.video.AUTO,
+        preferWebGL1: false,
+        subPixel: false
+    })) {
         alert("Your browser does not support HTML5 canvas.");
         return;
     }
@@ -58,10 +64,10 @@ export default function onload() {
             // change global volume setting
             if (keyCode === me.input.KEY.PLUS) {
                 // increase volume
-                me.audio.setVolume(me.audio.getVolume()+0.1);
+                me.audio.setVolume(me.audio.getVolume() + 0.1);
             } else if (keyCode === me.input.KEY.MINUS) {
                 // decrease volume
-                me.audio.setVolume(me.audio.getVolume()-0.1);
+                me.audio.setVolume(me.audio.getVolume() - 0.1);
             }
 
             // toggle fullscreen on/off

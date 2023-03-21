@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>melonJS - platformer example</title>
-  <link rel="stylesheet" type="text/css" media="screen" href="index.css">
-  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>Bollwerk Tower</title>
+    <link href="index.css" media="screen" rel="stylesheet" type="text/css">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" id="viewport"
+          name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
 </head>
 <body>
-  <!-- Canvas placeholder -->
-  <div id="screen"></div>
+<!-- Canvas placeholder -->
+<div id="screen"></div>
 
-  <!-- Bootstrap -->
-  <script type="module">
-      import { device } from 'https://esm.run/melonjs@13';
-      import onload from './js';
+<!-- Bootstrap -->
+<script type="module">
+    import {device} from 'https://esm.run/melonjs@13';
+    import onload from './js/index.js';
 
-      device.onReady(() => {
-          onload();
-      });
-  </script>
+    device.onReady(() => {
+        onload();
+    });
+</script>
 </body>
 </html>

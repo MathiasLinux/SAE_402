@@ -4,18 +4,18 @@ var resources = [
      * @example
      * { name: "example", type:"image", src: "data/img/example.png" },
      */
-    { name: "tilesetTest",         type:"image",   src: "data/img/tilesetTest.png" },
-    { name: "tileset",         type:"image",   src: "data/img/tileset.png" },
-    { name: "background",      type:"image",   src: "data/img/background.png" },
-    { name: "clouds",          type:"image",   src: "data/img/clouds.png" },
+    {name: "tilesetTest", type: "image", src: "data/img/tilesetTest.png"},
+    {name: "tileset", type: "image", src: "data/img/tileset.png"},
+    {name: "background", type: "image", src: "data/img/background.png"},
+    {name: "clouds", type: "image", src: "data/img/clouds.png"},
 
     /* Maps.
      * @example
      * { name: "example01", type: "tmx", src: "data/map/example01.tmx" },
      * { name: "example01", type: "tmx", src: "data/map/example01.json" },
      */
-    { name: "map1",            type: "tmx",    src: "data/map/map1.tmx" },
-    { name: "map2",            type: "tmx",    src: "data/map/map2.json" },
+    {name: "map1", type: "tmx", src: "data/map/map1.tmx"},
+    {name: "map2", type: "tmx", src: "data/map/map2.json"},
 
 
     /* Tilesets.
@@ -24,24 +24,24 @@ var resources = [
      * { name: "example01", type: "tsx", src: "data/map/example01.json" },
      */
     //{ name: "tilesetest",         type: "tsx",    src: "data/map/tilesettest.json" },
-    { name: "tilesettest",         type: "tsx",    src: "data/map/tilesettest.tsx" },
-    { name: "tileset",         type: "tsx",    src: "data/map/tileset.tsx" },
+    {name: "tilesettest", type: "tsx", src: "data/map/tilesettest.tsx"},
+    {name: "tileset", type: "tsx", src: "data/map/tileset.tsx"},
 
 
     /* Background music.
      * @example
      * { name: "example_bgm", type: "audio", src: "data/bgm/" },
      */
-    { name: "dst-gameforest",  type: "audio", src: "data/bgm/" },
+    //{ name: "dst-gameforest",  type: "audio", src: "data/bgm/" },
 
     /* Sound effects.
      * @example
      * { name: "example_sfx", type: "audio", src: "data/sfx/" }
      */
-    { name: "cling",           type: "audio",  src: "data/sfx/" },
-    { name: "die",             type: "audio",  src: "data/sfx/" },
-    { name: "enemykill",       type: "audio",  src: "data/sfx/" },
-    { name: "jump",            type: "audio",  src: "data/sfx/" },
+    //{ name: "cling",           type: "audio",  src: "data/sfx/" },
+    {name: "die", type: "audio", src: "data/sfx/"},
+    //{ name: "enemykill",       type: "audio",  src: "data/sfx/" },
+    {name: "jump", type: "audio", src: "data/sfx/"},
 
 
     /* Atlases
@@ -49,16 +49,16 @@ var resources = [
      * { name: "example_tps", type: "json", src: "data/img/example_tps.json" },
      */
     // texturePacker
-    { name: "texture",         type: "json",   src: "data/img/texture.json" },
-    { name: "texture",         type: "image",  src: "data/img/texture.png" },
+    {name: "texture", type: "json", src: "data/img/texture.json"},
+    {name: "texture", type: "image", src: "data/img/texture.png"},
 
     /* Bitmap Font
     * @example
     * { name: "example_fnt", type: "image", src: "data/img/example_fnt.png" },
     * { name: "example_fnt", type: "binary", src: "data/img/example_fnt.fnt" },
     */
-    { name: "PressStart2P", type:"image", src: "data/fnt/PressStart2P.png" },
-    { name: "PressStart2P", type:"binary", src: "data/fnt/PressStart2P.fnt"}
+    {name: "PressStart2P", type: "image", src: "data/fnt/PressStart2P.png"},
+    {name: "PressStart2P", type: "binary", src: "data/fnt/PressStart2P.fnt"}
 ];
 
 export default resources;

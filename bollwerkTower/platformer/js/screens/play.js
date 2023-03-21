@@ -30,7 +30,7 @@ class PlayScreen extends me.Stage {
         }
 
         // play some music
-        me.audio.playTrack("dst-gameforest");
+        //me.audio.playTrack("dst-gameforest");
     }
 
     /**
@@ -47,7 +47,7 @@ class PlayScreen extends me.Stage {
         }
 
         // stop some music
-        me.audio.stopTrack("dst-gameforest");
+        //me.audio.stopTrack("dst-gameforest");
     }
 };
 

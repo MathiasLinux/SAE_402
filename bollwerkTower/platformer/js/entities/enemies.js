@@ -27,8 +27,8 @@ class PathEnemyEntity extends me.Entity {
         // set start/end position based on the initial area size
         x = this.pos.x;
         this.startX = x;
-        this.endX   = x + width - settings.framewidth;
-        this.pos.x  = x + width - settings.framewidth;
+        this.endX = x + width - settings.framewidth;
+        this.pos.x = x + width - settings.framewidth;
 
         // enemies are not impacted by gravity
         this.body.gravityScale = 0;
@@ -69,16 +69,16 @@ class PathEnemyEntity extends me.Entity {
                 } else {
                     this.body.force.x = -this.body.maxVel.x;
                 }
-            }
+        }
 
-            if (this.walkLeft === false) {
-                if (this.pos.x >= this.endX) {
-                    // if reach the end position
-                    this.walkLeft = true;
-                    this.renderable.flipX(false);
-                } else {
-                    this.body.force.x = this.body.maxVel.x;
-                }
+        if (this.walkLeft === false) {
+            if (this.pos.x >= this.endX) {
+                // if reach the end position
+                this.walkLeft = true;
+                this.renderable.flipX(false);
+            } else {
+                this.body.force.x = this.body.maxVel.x;
+            }
         }
 
         // return true if we moved of if flickering
@@ -103,7 +103,7 @@ class PathEnemyEntity extends me.Entity {
 
             var emitter = new me.ParticleEmitter(this.centerX, this.centerY, {
                 width: this.width / 4,
-                height : this.height / 4,
+                height: this.height / 4,
                 tint: this.particleTint,
                 totalParticles: 32,
                 angle: 0,
@@ -112,19 +112,19 @@ class PathEnemyEntity extends me.Entity {
                 speed: 3
             });
 
-            me.game.world.addChild(emitter,this.pos.z);
+            me.game.world.addChild(emitter, this.pos.z);
             me.game.world.removeChild(this);
             emitter.burstParticles();
 
             // dead sfx
-            me.audio.play("enemykill", false);
+            //me.audio.play("enemykill", false);
             // give some score
             game.data.score += 150;
         }
         return false;
     }
 
-};
+}
 
 /**
  * An Slime enemy entity
@@ -149,9 +149,9 @@ export class SlimeEnemyEntity extends PathEnemyEntity {
         }
 
         // walking animatin
-        this.renderable.addAnimation ("walk", ["slime_normal.png", "slime_walk.png"]);
+        this.renderable.addAnimation("walk", ["slime_normal.png", "slime_walk.png"]);
         // dead animatin
-        this.renderable.addAnimation ("dead", ["slime_dead.png"]);
+        this.renderable.addAnimation("dead", ["slime_dead.png"]);
 
         // set default one
         this.renderable.setCurrentAnimation("walk");
@@ -163,7 +163,7 @@ export class SlimeEnemyEntity extends PathEnemyEntity {
         this.particleTint = "#FF35B8";
 
     }
-};
+}
 
 /**
  * An Fly enemy entity
@@ -188,9 +188,9 @@ export class FlyEnemyEntity extends PathEnemyEntity {
         }
 
         // walking animatin
-        this.renderable.addAnimation ("walk", ["fly_normal.png", "fly_fly.png"]);
+        this.renderable.addAnimation("walk", ["fly_normal.png", "fly_fly.png"]);
         // dead animatin
-        this.renderable.addAnimation ("dead", ["fly_dead.png"]);
+        this.renderable.addAnimation("dead", ["fly_dead.png"]);
 
         // set default one
         this.renderable.setCurrentAnimation("walk");
@@ -202,4 +202,4 @@ export class FlyEnemyEntity extends PathEnemyEntity {
         this.particleTint = "#000000";
 
     }
-};
+}

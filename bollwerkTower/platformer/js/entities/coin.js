@@ -10,8 +10,8 @@ class CoinEntity extends me.Collectable {
         super(x, y,
             Object.assign({
                 image: game.texture,
-                region : "coin.png",
-                shapes :[new me.Ellipse(35 / 2, 35 / 2, 35, 35)] // coins are 35x35
+                region: "coin.png",
+                shapes: [new me.Ellipse(35 / 2, 35 / 2, 35, 35)] // coins are 35x35
             })
         );
     }
@@ -29,7 +29,7 @@ class CoinEntity extends me.Collectable {
     onCollision(/*response*/) {
 
         // do something when collide
-        me.audio.play("cling", false);
+        //me.audio.play("cling", false);
         // give some score
         game.data.score += 250;
 
@@ -40,6 +40,6 @@ class CoinEntity extends me.Collectable {
 
         return false;
     }
-};
+}
 
 export default CoinEntity;
