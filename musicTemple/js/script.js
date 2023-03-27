@@ -116,15 +116,15 @@ function getCoord(note,oC){
 function getScore(x,partition){
     console.log(x)
     // console.log(partition)
-    // let perfect = widthNote*12.5/100;
-    // let good = widthNote*25/100;
-    let marge = widthNote*12.5/100;
+    let good = widthNote*12.5/100;
+    let perfect = widthNote*25/100;
+    // let marge = widthNote*12.5/100;
     if(partition == "n1" || partition == "n2"){
-        if(x>=(zoneG) && x<=(zoneG + widthNote)){
+        if(x>=(zoneG + perfect) && x<=(zoneG + widthNote - perfect)){
             document.querySelector(".message").innerHTML="<h1>Perfect</h1>";
             score+=100;
         }
-        else if(x>=(zoneG-marge) && x<=(zoneG + widthNote + marge)){
+        else if(x>=(zoneG + good) && x<=(zoneG + widthNote -good)){
             document.querySelector(".message").innerHTML="<h2>Good</h2>";
             score+=50;
         }
@@ -132,11 +132,11 @@ function getScore(x,partition){
             document.querySelector(".message").innerHTML="<h3>Miss</h3>";
     }
     else{
-        if(x>=(zoneD) && x<=(zoneD + widthNote)){
+        if(x>=(zoneD + perfect) && x<=(zoneD + widthNote - perfect)){
             document.querySelector(".message").innerHTML="<h1>Perfect</h1>";
             score+=100;
         }
-        else if(x>=(zoneD-marge) && x<=(zoneD + widthNote + marge)){
+        else if(x>=(zoneD + good) && x<=(zoneD + widthNote - good)){
             document.querySelector(".message").innerHTML="<h2>Good</h2>";
             score+=50;
         }
