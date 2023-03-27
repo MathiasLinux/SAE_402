@@ -4,18 +4,40 @@ body{
     color: white;
     overflow: hidden;
     font-family: Arial, Helvetica, sans-serif;
-    height: 100vh;
 }
 
 main{
     position: relative;
+    height: 100vh;
+    width: 100vw;
+}
+
+.jouer{
+    position: relative;
+    background-color: #1E212B;
+    opacity: 80%;
+    width: 100vw;
+    height: 100%;
+    z-index: 6;
+    display: grid;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.jouer>p{
+    opacity: 100%;
+    margin: 2% 4%;
 }
 
 .rythm{
     position: absolute;
-    width: 320px;
-    height: 160px;
+    /* width: 320px;
+    height: 160px; */
+    width: 30%;
+    height: 30%;
     border: white solid 4px;
+    z-index: 5;
 }
 
 .G>.rythm{
@@ -48,10 +70,11 @@ main{
 
 .zone{
     position: absolute;
-    width: 152px;
-    height: 152px;
+    /* width: 152px;
+    height: 152px; */
     border: red solid 4px;
     border-radius: 100%;
+    z-index: 5;
 }
 
 .G>.rythm>.zone{
@@ -64,8 +87,8 @@ main{
 
 .note{
     position: absolute;
-    width: 160px;
-    height: 160px;
+    /* width: 160px;
+    height: 160px; */
     background-color: red;
     border: red solid 0px;
     border-radius: 100%;
@@ -75,18 +98,21 @@ main{
 .G>.rythm>.partition>.note{
     left: 100%;
     animation: bouge_noteG 2s linear;
+    animation-play-state: paused;
 }
 
 .D>.rythm>.partition>.note{
     right: 100%;
     animation: bouge_noteD 2s linear;
+    animation-play-state: paused;
 }
 
 .partition{
-    height: 160px;
-    width: 768px;
+    height: 2px;
+    /* width: 768px; */
+    width: 50vw;
     position: absolute;
-    z-index: -1;
+    z-index: 4;
 }
 
 .G>.rythm>.partition{

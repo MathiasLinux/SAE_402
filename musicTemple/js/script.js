@@ -1,5 +1,17 @@
+document.querySelector(".jouer").addEventListener("touchend",pleinEcran)
+
+function pleinEcran() {
+    document.documentElement.requestFullscreen()
+    this.style.display = "none"
+    document.querySelectorAll(".note").forEach(n => {
+        n.style.animationPlayState = "running";
+    })
+}
+
 let w = window.innerWidth;
 let h = window.innerHeight;
+
+let diametre = document.querySelector(".rythm").clientHeight;
 
 let musicDelay = [[0,1,2],[3,4,5],[6,7,8],[9,10,11]];
 
@@ -8,7 +20,8 @@ document.querySelector("main").style.height=h+"px";
 
 let oneClick = [false,false,false,false];
 
-let zone = document.querySelectorAll(".zone");
+let zones = document.querySelectorAll(".zone");
+let notes = [];
 
 let id = [1,1,1,1];
 
@@ -21,7 +34,17 @@ let score = 0;
 
 function resizeWindow(){
     w = window.innerWidth;
+    h = window.innerHeight;
     document.querySelector("main").style.width=w+"px";
+    document.querySelector("main").style.height=h+"px";
+    zones.forEach(z => {
+        z.style.width = diametre - 8 + "px";
+        z.style.height = diametre - 8 + "px";
+    })
+    notes.forEach(n => {
+        n.style.width = diametre + "px";
+        n.style.height = diametre + "px";
+    })
 }
 
 function addNote(idRythm,idNote,delay){
@@ -84,21 +107,24 @@ function getCoord(note,oC){
         // console.log(oneClick[oC])
         oneClick[oC]=true;
         let partition = note.id.split("-")[0];
-        getScore(note.offsetLeft,partition);
+        let x = parseInt(note.getBoundingClientRect().x.toFixed())+widthNote/2;
+        // x = x.x.toFixed();
+        getScore(x,partition);
     }
 }
 
 function getScore(x,partition){
     console.log(x)
     // console.log(partition)
-    let perfect = widthNote*12.5/100;
-    let good = widthNote*25/100;
+    // let perfect = widthNote*12.5/100;
+    // let good = widthNote*25/100;
+    let marge = widthNote*12.5/100;
     if(partition == "n1" || partition == "n2"){
-        if(x>(widthNote-perfect) && x<(widthNote+perfect)){
+        if(x>=(zoneG) && x<=(zoneG + widthNote)){
             document.querySelector(".message").innerHTML="<h1>Perfect</h1>";
             score+=100;
         }
-        else if(x>(widthNote-good) && x<(widthNote+good)){
+        else if(x>=(zoneG-marge) && x<=(zoneG + widthNote + marge)){
             document.querySelector(".message").innerHTML="<h2>Good</h2>";
             score+=50;
         }
@@ -106,22 +132,23 @@ function getScore(x,partition){
             document.querySelector(".message").innerHTML="<h3>Miss</h3>";
     }
     else{
-        if(x>(widthPartition-widthNote*2-perfect) && x<(widthPartition-widthNote*2+perfect)){
+        if(x>=(zoneD) && x<=(zoneD + widthNote)){
             document.querySelector(".message").innerHTML="<h1>Perfect</h1>";
             score+=100;
-        } 
-        else if(x>(widthPartition-widthNote*2-good) && x<(widthPartition-widthNote*2+good)){
-            document.querySelector(".message").innerHTML="<h2>Good</h3>";
+        }
+        else if(x>=(zoneD-marge) && x<=(zoneD + widthNote + marge)){
+            document.querySelector(".message").innerHTML="<h2>Good</h2>";
             score+=50;
         }
         else
             document.querySelector(".message").innerHTML="<h3>Miss</h3>";
     }
+
     document.querySelector(".score").innerText=score;
 }
 
 function getNote(){
-    let partition = this.id.split("-")[0]
+    let partition = this.id.split("-")[0];
     // console.log(partition)
     switch ((partition)) {
         case "n1":
@@ -148,24 +175,30 @@ function noteSuivante(n) {
     defNote();
 }
 
+createMusic(musicDelay);
+
+notes = document.querySelectorAll(".note");
+
+resizeWindow();
+
 window.addEventListener("resize", resizeWindow)
 
-createMusic(musicDelay);
+let zoneG = parseInt(document.querySelector(".G>.rythm>.zone").getBoundingClientRect().x.toFixed());
+let zoneD = parseInt(document.querySelector(".D>.rythm>.zone").getBoundingClientRect().x.toFixed());
 
 defNote();
 
 let widthNote = document.querySelector(".note").offsetWidth;
-
 let widthPartition = document.querySelector(".partition").offsetWidth;
 
-zone.forEach(z =>{
-    z.addEventListener("click",toucheZone)
-})
-
-// zone.forEach(z => {
-//     z.addEventListener("touchstart",toucheZone)
+// zones.forEach(Z =>{
+//     Z.addEventListener("click",toucheZone)
 // })
 
-document.querySelectorAll(".note").forEach(N => {
+zones.forEach(z => {
+    z.addEventListener("touchstart",toucheZone)
+})
+
+notes.forEach(N => {
     N.addEventListener("animationend",getNote)
 })
