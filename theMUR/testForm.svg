@@ -1,0 +1,7 @@
+<svg width="540" height="454" viewBox="0 0 540 454" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="testForm">
+<path id="center" d="M152.5 412V131.5L101 119.5L81 80L152.5 30.5H330L471 80L425 131.5H330V412H152.5Z" stroke="#0047FF" stroke-width="6"/>
+<path id="interior" d="M178.317 376V113.628L142.795 105.355L129 78.1245L178.317 57H300.746L414.5 86.5L372.5 113.628H300.746V376H178.317Z" stroke="#FFE600" stroke-width="6"/>
+<path id="exterior" d="M109.417 450.5V151.786L33.4872 134.109L4 75.92L109.417 3H371.115L535 66L481 151.786H371.115V450.5H109.417Z" stroke="#FFE600" stroke-width="6"/>
+</g>
+</svg>
