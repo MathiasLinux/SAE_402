@@ -76,35 +76,10 @@
       }
     },
     {
-      "filename": "man.png",
-      "frame": {
-        "x": 0,
-        "y": 340,
-        "w": 26,
-        "h": 50
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 26,
-        "h": 50
-      },
-      "sourceSize": {
-        "w": 26,
-        "h": 50
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    {
       "filename": "shadedDark13.png",
       "frame": {
         "x": 0,
-        "y": 390,
+        "y": 340,
         "w": 48,
         "h": 48
       },
@@ -128,8 +103,8 @@
     {
       "filename": "shadedDark15.png",
       "frame": {
-        "x": 26,
-        "y": 340,
+        "x": 0,
+        "y": 388,
         "w": 48,
         "h": 48
       },
@@ -154,7 +129,7 @@
       "filename": "shadedDark30.png",
       "frame": {
         "x": 0,
-        "y": 438,
+        "y": 436,
         "w": 48,
         "h": 48
       },
@@ -173,6 +148,31 @@
       "pivot": {
         "x": 0.5,
         "y": 0.5
+      }
+    },
+    {
+      "filename": "man.png",
+      "frame": {
+        "x": 48,
+        "y": 340,
+        "w": 32,
+        "h": 32
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 32 ,
+        "h": 32
+      },
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 1
       }
     }
   ],

@@ -66,7 +66,7 @@ class PlayerEntity extends me.Entity {
         this.renderable.setCurrentAnimation("walk");
 
         // set the renderable position to bottom center
-        this.anchorPoint.set(0.5, 1.0);
+        this.anchorPoint.set(0.5, 0.5);
 
         //detect if the player is at the end of the level
         if (this.pos.y < 65) {
@@ -93,7 +93,7 @@ class PlayerEntity extends me.Entity {
             this.renderable.flipX(false);
         }
 
-        if (me.input.isKeyPressed("jump") && this.jumpCount < 200) {
+        if (me.input.isKeyPressed("jump") && this.jumpCount < 2) {
             this.body.jumping = true;
             if (this.multipleJump <= 2) {
                 this.jumpCount++;

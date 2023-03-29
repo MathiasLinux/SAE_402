@@ -5,6 +5,7 @@ var resources = [
      * { name: "example", type:"image", src: "data/img/example.png" },
      */
     {name: "tilesetTest", type: "image", src: "data/img/tilesetTest.png"},
+    {name: "titleset_platform", type: "image", src: "data/img/titleset_platform.png"},
     {name: "tileset", type: "image", src: "data/img/tileset.png"},
     {name: "background", type: "image", src: "data/img/background.png"},
     {name: "clouds", type: "image", src: "data/img/clouds.png"},
@@ -25,6 +26,7 @@ var resources = [
      */
     //{ name: "tilesetest",         type: "tsx",    src: "data/map/tilesettest.json" },
     {name: "tilesettest", type: "tsx", src: "data/map/tilesettest.tsx"},
+    {name: "tileset_platform", type: "tsx", src: "data/map/tileset_platform.tsx"},
     {name: "tileset", type: "tsx", src: "data/map/tileset.tsx"},
 
 

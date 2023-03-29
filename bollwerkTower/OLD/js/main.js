@@ -52,8 +52,8 @@ player.onload = function () {
         x: x,
         y: y,
         image: player,
-        width: 32,
-        height: 32,
+        width: 50,
+        height: 26,
     });
     layer.add(playerImg);
 
