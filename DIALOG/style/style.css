@@ -1,0 +1,19 @@
+body{
+    margin: 0%;
+    background-color: #333;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.dialogue{
+    position: absolute;
+    background-color: palegoldenrod;
+    border: white solid 2px;
+    border-radius: 16px;
+    padding: 4vh 4vw;
+    width: 72vw;
+    height: 32vh;
+    bottom: 2%;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+}
