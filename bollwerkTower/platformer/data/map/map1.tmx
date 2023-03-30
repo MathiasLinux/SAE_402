@@ -44,21 +44,21 @@
   <object id="15" x="0" y="1141">
    <polyline points="0,0 0,-630"/>
   </object>
-  <object id="39" x="480.034" y="1040.21" width="31.75" height="15.875"/>
-  <object id="41" x="640.067" y="864.164" width="31.8804" height="15.875"/>
-  <object id="52" x="1216.03" y="640.159" width="31.9688" height="16.0313"/>
-  <object id="53" x="928.125" y="432.154" width="31.9239" height="16.0054"/>
-  <object id="54" x="768.03" y="352.172" width="31.9918" height="16.0054"/>
-  <object id="55" x="640.022" y="288.172" width="31.9375" height="16.0625"/>
-  <object id="56" x="768.016" y="240.157" width="31.9688" height="16"/>
+  <object id="39" x="475.911" y="1040.1" width="40" height="15.875"/>
+  <object id="41" x="636.567" y="864.164" width="40" height="15.875"/>
+  <object id="52" x="1211.67" y="639.977" width="40" height="16.0313"/>
+  <object id="53" x="924.034" y="432.154" width="40" height="16.0054"/>
+  <object id="54" x="763.967" y="352.172" width="40" height="16.0054"/>
+  <object id="55" x="636.204" y="288.081" width="40" height="16.0625"/>
+  <object id="56" x="763.766" y="240.157" width="40" height="16"/>
   <object id="57" x="928.095" y="224.093" width="127.75" height="31.9659"/>
-  <object id="59" x="1120.16" y="368.122" width="31.9239" height="16.0054"/>
-  <object id="60" x="1248.13" y="448.159" width="31.9239" height="16.0054"/>
-  <object id="61" x="1376.16" y="544.273" width="31.9239" height="16.0054"/>
-  <object id="62" x="992.082" y="672.193" width="31.9239" height="16.0054"/>
-  <object id="63" x="896.078" y="768.219" width="31.9239" height="16.0054"/>
-  <object id="64" x="800.129" y="864.179" width="31.9239" height="16.0054"/>
-  <object id="65" x="736.106" y="944.264" width="31.9239" height="16.0054"/>
-  <object id="66" x="576.038" y="960.179" width="31.9239" height="16.0054"/>
+  <object id="59" x="1115.98" y="368.304" width="40" height="16.0054"/>
+  <object id="60" x="1244.13" y="448.25" width="40" height="16.0054"/>
+  <object id="61" x="1372.16" y="544.023" width="40" height="16.0054"/>
+  <object id="62" x="987.707" y="672.193" width="40" height="16.0054"/>
+  <object id="63" x="892.703" y="768.219" width="40" height="16.0054"/>
+  <object id="64" x="795.629" y="863.929" width="40" height="16.0054"/>
+  <object id="65" x="732.106" y="944.014" width="40" height="16.0054"/>
+  <object id="66" x="571.788" y="960.179" width="40" height="16.0054"/>
  </objectgroup>
 </map>

@@ -11,7 +11,7 @@ class FSControl extends me.GUI_Object {
     constructor(x, y) {
         super(x, y, {
             image: game.texture,
-            region : "shadedDark30.png"
+            region: "shadedDark30.png"
         });
         this.setOpacity(0.5);
     }
@@ -41,7 +41,7 @@ class FSControl extends me.GUI_Object {
         }
         return false;
     }
-};
+}
 
 /**
  * a basic control to toggle fullscreen on/off
@@ -53,7 +53,7 @@ class AudioControl extends me.GUI_Object {
     constructor(x, y) {
         super(x, y, {
             image: game.texture,
-            region : "shadedDark13.png" // ON by default
+            region: "shadedDark13.png" // ON by default
         });
         this.setOpacity(0.5);
         this.isMute = false;
@@ -88,7 +88,7 @@ class AudioControl extends me.GUI_Object {
         }
         return false;
     }
-};
+}
 
 /**
  * a basic HUD item to display score
@@ -100,13 +100,13 @@ class ScoreItem extends me.BitmapText {
     constructor(x, y) {
         // call the super constructor
         super(
-            me.game.viewport.width  + x,
+            me.game.viewport.width + x,
             me.game.viewport.height + y,
             {
-                font : "PressStart2P",
-                textAlign : "right",
-                textBaseline : "bottom",
-                text : "0"
+                font: "PressStart2P",
+                textAlign: "right",
+                textBaseline: "bottom",
+                text: "0"
             }
         );
 
@@ -116,7 +116,7 @@ class ScoreItem extends me.BitmapText {
         this.score = -1;
 
         // recalculate the object position if the canvas is resize
-        me.event.on(me.event.CANVAS_ONRESIZE, (function(w, h){
+        me.event.on(me.event.CANVAS_ONRESIZE, (function (w, h) {
             this.pos.set(w, h, 0).add(this.relative);
         }).bind(this));
     }
@@ -124,7 +124,7 @@ class ScoreItem extends me.BitmapText {
     /**
      * update function
      */
-    update( dt ) {
+    update(dt) {
         if (this.score !== game.data.score) {
             this.score = game.data.score;
             this.setText(this.score);
@@ -132,7 +132,7 @@ class ScoreItem extends me.BitmapText {
         }
         return super.update(dt);
     }
-};
+}
 
 /**
  * a HUD container and child items
@@ -161,6 +161,7 @@ class UIContainer extends me.Container {
         // add our audio control object
         this.addChild(new AudioControl(36, 56));
 
+        // add our fullscreen control object
         this.addChild(new FSControl(36 + 10 + 48, 56));
 
         /*if (!me.device.isMobile) {
@@ -168,6 +169,6 @@ class UIContainer extends me.Container {
 
         }*/
     }
-};
+}
 
 export default UIContainer;

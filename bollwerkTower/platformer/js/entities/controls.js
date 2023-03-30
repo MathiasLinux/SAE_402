@@ -11,7 +11,7 @@ class Button extends me.GUI_Object {
     constructor(x, y) {
         super(x, y, {
             image: game.texture,
-            region : "shadedDark36.png"
+            region: "shadedDark36.png"
         });
         this.setOpacity(0.25);
         this.anchorPoint.set(0, 0);
@@ -34,7 +34,7 @@ class Button extends me.GUI_Object {
         me.input.triggerKeyEvent(me.input.KEY.SPACE, false);
         return false;
     }
-};
+}
 
 
 /**
@@ -48,21 +48,21 @@ class Joypad extends me.GUI_Object {
         super(x, y, {
             // background "fix" part of the joypad
             image: game.texture,
-            region : "shadedDark07.png",
-            anchorPoint : new me.Vector2d(0, 0)
+            region: "shadedDark07.png",
+            anchorPoint: new me.Vector2d(0, 0)
         });
 
         // mobile part of the joypad
         this.pad = new me.Sprite(x, y, {
             image: game.texture,
-            region : "shadedDark01.png",
-            anchorPoint : new me.Vector2d(0, 0)
+            region: "shadedDark01.png",
+            anchorPoint: new me.Vector2d(0, 0)
         });
 
         // default relative position from the back of the joypad
         this.relative = new me.Vector2d(
             this.width / 2 - this.pad.width / 2,
-            this.height / 2 - this.pad.height /2
+            this.height / 2 - this.pad.height / 2
         );
 
         // offset by which the joypad move when pressed/moved
@@ -174,7 +174,7 @@ class Joypad extends me.GUI_Object {
         this.pad.pos.setV(this.pos).add(this.relative).add(this.joypad_offset);
         this.pad.draw(renderer);
     }
-};
+}
 
 /**
  * a very simple virtual joypad and buttons, that triggers
@@ -200,15 +200,16 @@ class VirtualJoypad extends me.Container {
         this.name = "VirtualJoypad";
 
         // instance of the virtual joypad
+        // Change the position to be on the bottom left of the screen
         this.joypad = new Joypad(
-            50,
-            me.game.viewport.height - 200
+            30,
+            me.game.viewport.height - 180
         );
 
         // instance of the button
         this.button = new Button(
-            me.game.viewport.width - 150,
-            me.game.viewport.height - 150
+            me.game.viewport.width - 120,
+            me.game.viewport.height - 120
         );
 
         this.addChild(this.joypad);
@@ -220,13 +221,14 @@ class VirtualJoypad extends me.Container {
         me.event.on(
             me.event.VIEWPORT_ONRESIZE, function (width, height) {
                 self.button.pos.set(
-                    width - 150,
-                    height - 150,
+                    //A button position in fullscren mode
+                    width - 120,
+                    height - 120,
                     self.button.pos.z
                 )
             }
         );
     }
-};
+}
 
 export default VirtualJoypad;
