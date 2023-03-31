@@ -34,11 +34,19 @@ body {
     display: none;
 }
 
-svg {
+#Calque_2 {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 50%;
+    height: 100%;
+}
+
+#Calque_3 {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 50%;
     height: 100%;
 }
 

@@ -36,23 +36,53 @@ function tailleCanvas() {
 let startX = 0;
 let startY = 0;
 
+/********
+ * Arrays for the Europe Tower
+ */
 // Array to store the quality of the touch input
-let touchPoints = [];
-let allTouchPoints = [];
+let touchPointsEurope = [];
+// Array storing all the touch input to calculate the distance
+let alltouchPointsEurope = [];
+
+/********
+ * Arrays for the Wheel of Mulhouse
+ */
+// Array to store the quality of the touch input
+let touchPointsWheel = [];
+// Array storing all the touch input to calculate the distance
+let alltouchPointsWheel = [];
 
 document.querySelector("body").addEventListener("touchmove", function (event) {
     // Set the touch input into variable
     let clientX = event.touches[0].clientX;
     let clientY = event.touches[0].clientY;
     // Check if the touch input is on the good part of the canvas
-    if (document.elementFromPoint(clientX, clientY).classList.contains("borderLimit")) {
-        // If the touch input is on the good part of the canvas, push "good" into the array
-        touchPoints.push("good");
-    } else {
-        // If the touch input is not on the good part of the canvas, push "bad" into the array
-        touchPoints.push("bad");
+    if (clientX < tailleX / 2) {
+        if (document.elementFromPoint(clientX, clientY).classList.contains("borderLimit")) {
+            // If the touch input is on the good part of the canvas, push "good" into the array
+            touchPointsEurope.push("good");
+        } else {
+            // If the touch input is not on the good part of the canvas, push "bad" into the array
+            touchPointsEurope.push("bad");
+        }
     }
-    allTouchPoints.push([clientX, clientY]);
+    if (clientX > tailleX / 2) {
+        if (document.elementFromPoint(clientX, clientY).classList.contains("cls-1")) {
+            // If the touch input is on the good part of the canvas, push "good" into the array
+            touchPointsWheel.push("good");
+        } else {
+            // If the touch input is not on the good part of the canvas, push "bad" into the array
+            touchPointsWheel.push("bad");
+        }
+    }
+    //if the touch input is on the left side of the screen add into the allTouchPointsEurope array
+    if (clientX < tailleX / 2) {
+        alltouchPointsEurope.push([clientX, clientY]);
+    }
+    //if the touch input is on the right side of the screen add into the allTouchPointsWheel array
+    if (clientX > tailleX / 2) {
+        alltouchPointsWheel.push([clientX, clientY]);
+    }
 
     /*****
      * Creation of the line from the touch input
@@ -78,21 +108,21 @@ document.querySelector("body").addEventListener("touchmove", function (event) {
  * Else return false
  * @returns {boolean}
  */
-function checkTouchPoints() {
+function checktouchPointsEurope() {
     let good = 0;
     let bad = 0;
-    for (let i = 0; i < touchPoints.length; i++) {
-        if (touchPoints[i] === "good") {
+    for (let i = 0; i < touchPointsEurope.length; i++) {
+        if (touchPointsEurope[i] === "good") {
             good++;
         } else {
             bad++;
         }
     }
     let distance = 0;
-    for (let i = 0; i < allTouchPoints.length; i++) {
-        distance += checkDistance(allTouchPoints[i]);
+    for (let i = 0; i < alltouchPointsEurope.length; i++) {
+        distance += checkDistance(alltouchPointsEurope[i]);
     }
-    if (distance > 180000 && distance < 450000) {
+    if (distance > 150000 && distance < 450000) {
         console.log("distance ok");
         console.log(distance);
     } else {
@@ -100,7 +130,7 @@ function checkTouchPoints() {
         console.log(distance);
     }
     //if 9=0% of the touch points are good return true
-    if (good > (touchPoints.length / 100) * 80) {
+    if (good > (touchPointsEurope.length / 100) * 80) {
         return true;
     } else {
         return false;
@@ -114,9 +144,9 @@ function checkTouchPoints() {
  * @returns {number}
  */
 
-function checkDistance(touchPoints) {
+function checkDistance(touchPointsEurope) {
     //calculate the distance
-    let distance1 = Math.sqrt(Math.pow(startX - touchPoints[0], 2) + Math.pow(startY - touchPoints[1], 2));
+    let distance1 = Math.sqrt(Math.pow(startX - touchPointsEurope[0], 2) + Math.pow(startY - touchPointsEurope[1], 2));
     //console.log(distance1);
     return distance1;
 }
