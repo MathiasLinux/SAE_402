@@ -38,6 +38,7 @@ let startY = 0;
 
 // Array to store the quality of the touch input
 let touchPoints = [];
+let allTouchPoints = [];
 
 document.querySelector("body").addEventListener("touchmove", function (event) {
     // Set the touch input into variable
@@ -51,6 +52,7 @@ document.querySelector("body").addEventListener("touchmove", function (event) {
         // If the touch input is not on the good part of the canvas, push "bad" into the array
         touchPoints.push("bad");
     }
+    allTouchPoints.push([clientX, clientY]);
 
     /*****
      * Creation of the line from the touch input
@@ -86,12 +88,37 @@ function checkTouchPoints() {
             bad++;
         }
     }
-    //if 80% of the touch points are good return true
+    let distance = 0;
+    for (let i = 0; i < allTouchPoints.length; i++) {
+        distance += checkDistance(allTouchPoints[i]);
+    }
+    if (distance > 180000 && distance < 450000) {
+        console.log("distance ok");
+        console.log(distance);
+    } else {
+        console.log("distance pas ok");
+        console.log(distance);
+    }
+    //if 9=0% of the touch points are good return true
     if (good > (touchPoints.length / 100) * 80) {
         return true;
     } else {
         return false;
     }
+}
+
+/******
+ * Function to check the distance of the touch input from the starting position of the line to the current position of the touch input (pythagoras)
+ * If the distance is between 100 and 1000, return true
+ * Else return false
+ * @returns {number}
+ */
+
+function checkDistance(touchPoints) {
+    //calculate the distance
+    let distance1 = Math.sqrt(Math.pow(startX - touchPoints[0], 2) + Math.pow(startY - touchPoints[1], 2));
+    //console.log(distance1);
+    return distance1;
 }
 
 /********
