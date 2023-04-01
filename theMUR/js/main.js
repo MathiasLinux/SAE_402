@@ -56,7 +56,7 @@ document.querySelector("body").addEventListener("touchmove", function (event) {
     // Set the touch input into variable
     let clientX = event.touches[0].clientX;
     let clientY = event.touches[0].clientY;
-    // Check if the touch input is on the good part of the canvas
+    // Check if the touch input is on the left side of the screen
     if (clientX < tailleX / 2) {
         if (document.elementFromPoint(clientX, clientY).classList.contains("borderLimit")) {
             // If the touch input is on the good part of the canvas, push "good" into the array
@@ -66,6 +66,7 @@ document.querySelector("body").addEventListener("touchmove", function (event) {
             touchPointsEurope.push("bad");
         }
     }
+    // Check if the touch input is on the right side of the screen
     if (clientX > tailleX / 2) {
         if (document.elementFromPoint(clientX, clientY).classList.contains("cls-1")) {
             // If the touch input is on the good part of the canvas, push "good" into the array
@@ -103,7 +104,7 @@ document.querySelector("body").addEventListener("touchmove", function (event) {
 });
 
 /********
- * Function to check if the touch input is on the good part of the canvas
+ * Function to check if the touch input is on the good part of the canvas for the Europe Tower
  * If 80% of the touch input is on the good part of the canvas, return true
  * Else return false
  * @returns {boolean}
@@ -119,18 +120,59 @@ function checktouchPointsEurope() {
         }
     }
     let distance = 0;
+    let validateDistance = false;
     for (let i = 0; i < alltouchPointsEurope.length; i++) {
         distance += checkDistance(alltouchPointsEurope[i]);
     }
     if (distance > 150000 && distance < 450000) {
         console.log("distance ok");
         console.log(distance);
+        validateDistance = true;
     } else {
         console.log("distance pas ok");
         console.log(distance);
+        validateDistance = false;
     }
-    //if 9=0% of the touch points are good return true
-    if (good > (touchPointsEurope.length / 100) * 80) {
+    //if 80% of the touch points are good return true
+    if ((good > (touchPointsEurope.length / 100) * 80) && validateDistance) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+/********
+ * Function to check if the touch input is on the good part of the canvas for the Wheel of Mulhouse
+ * If 80% of the touch input is on the good part of the canvas, return true
+ * Else return false
+ * @returns {boolean}
+ */
+function checktouchPointsWheel() {
+    let good = 0;
+    let bad = 0;
+    for (let i = 0; i < touchPointsWheel.length; i++) {
+        if (touchPointsWheel[i] === "good") {
+            good++;
+        } else {
+            bad++;
+        }
+    }
+    let distance = 0;
+    let validateDistance = false;
+    for (let i = 0; i < alltouchPointsWheel.length; i++) {
+        distance += checkDistance(alltouchPointsWheel[i]);
+    }
+    if (distance > 350000 && distance < 650000) {
+        console.log("distance ok");
+        console.log(distance);
+        validateDistance = true;
+    } else {
+        console.log("distance pas ok");
+        console.log(distance);
+        validateDistance = false;
+    }
+    //if 80% of the touch points are good return true
+    if ((good > (touchPointsWheel.length / 100) * 80) && validateDistance) {
         return true;
     } else {
         return false;
@@ -139,16 +181,12 @@ function checktouchPointsEurope() {
 
 /******
  * Function to check the distance of the touch input from the starting position of the line to the current position of the touch input (pythagoras)
- * If the distance is between 100 and 1000, return true
- * Else return false
  * @returns {number}
  */
 
 function checkDistance(touchPointsEurope) {
     //calculate the distance
-    let distance1 = Math.sqrt(Math.pow(startX - touchPointsEurope[0], 2) + Math.pow(startY - touchPointsEurope[1], 2));
-    //console.log(distance1);
-    return distance1;
+    return Math.sqrt(Math.pow(startX - touchPointsEurope[0], 2) + Math.pow(startY - touchPointsEurope[1], 2));
 }
 
 /********
@@ -166,6 +204,33 @@ document.querySelector("body").addEventListener("touchstart", function (event) {
 
     // Move the drawing cursor to the starting position
     ctx.moveTo(startX, startY);
+});
+
+/********
+ * Function to activate the verification of the touch input with the click on the button
+ * If the function checktouchPointsEurope and checktouchPointsWheel return true, redirect to user to the next message of the game
+ * Else reset the canvas and the arrays and display a message
+ */
+document.querySelector(".verify").addEventListener("click", function () {
+    if (checktouchPointsEurope() && checktouchPointsWheel()) {
+        console.log("ok"); // change this to a location.href for the next message of the game
+    } else {
+        //reset the canvas and the arrays and display a message
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        touchPointsEurope = [];
+        touchPointsWheel = [];
+        alltouchPointsEurope = [];
+        alltouchPointsWheel = [];
+        document.querySelector(".error").classList.toggle("errorDisplay");
+    }
+});
+
+/********
+ * Function to close the message when the user click on it
+ * Toggle the class errorDisplay to hide the message
+ */
+document.querySelector(".error").addEventListener("click", function () {
+    document.querySelector(".error").classList.toggle("errorDisplay");
 });
 
 /********
