@@ -5,6 +5,9 @@
       <webServer id="f5400e7d-bc2a-4fa5-a04b-66445fbbbe05" name="localfedora" url="http://sae402.test">
         <fileTransfer mountedRoot="/var/www/sae402.test" accessType="MOUNT" port="0" />
       </webServer>
+      <webServer id="1a35cc52-c2e2-4106-a164-24e5e7195021" name="localalma" url="http://sae402.test">
+        <fileTransfer mountedRoot="/var/www/sae402.test" accessType="MOUNT" port="0" />
+      </webServer>
     </option>
   </component>
 </project>

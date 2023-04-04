@@ -1,10 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+    --background-color: #270040;
+}
+
 body {
     padding: 0;
     margin: 0;
+    font-family: 'Roboto', sans-serif;
 }
 
 
 html, body, #map {
     height: 100%;
     width: 100vw;
+}
+
+.leaflet-top {
+    bottom: 2%;
+    top: auto;
+}
+
+.topLayer {
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    background-color: var(--background-color);
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    text-align: center;
+    padding: 5% 0 5% 0;
+    border-radius: 0 0 50px 50px;
+}
+
+.topLayerLeft {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 30px;
+    color: white;
+}
+
+.topLayerLeft svg {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.topLayerRight {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 30px;
+    color: white;
+}
+
+.buttonGradient {
+    background: linear-gradient(90deg, #FEAD4F 0%, #FB4E2F 100%);
+    text-decoration: none;
+    color: black;
+    padding: 10px 40px;
+    border-radius: 50px;
+    font-size: 18px;
+}
+
+.dialogue {
+    display: none;
+    position: fixed;
+    background-color: var(--background-color);
+    color: white;
+    border-radius: 16px;
+    padding: 4% 4%;
+    width: 72%;
+    height: 32%;
+    bottom: 2%;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    z-index: 10000;
+}
+
+.dialogue .person {
+    font-size: 20px;
+    margin-bottom: 20px;
 }

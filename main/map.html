@@ -2,18 +2,59 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
     <title>Map</title>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
-        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
-        crossorigin=""/>
-  <link rel="stylesheet" href="styles/map.css">
+    <link crossorigin="" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+          integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+          rel="stylesheet"/>
+    <link href="styles/map.css" rel="stylesheet">
 </head>
 <body>
+<div class="topLayer">
+    <div class="topLayerLeft">
+        <svg data-name="Calque 2" id="Calque_2" viewBox="0 0 248 248" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <style>
+                    .cls-2 {
+                        fill: #e20909;
+                    }
+                </style>
+            </defs>
+            <g id="Border_wheel">
+                <g id="wheel_group">
+                    <path class="cls-2" d="m96.5,14.5l17,18h20.26l16.74-18s-5-4-27-4c-20,0-27,4-27,4Z"/>
+                    <path class="cls-2"
+                          d="m27.13,66.02l24.75.71,14.32-14.32-.89-24.57s-6.36.71-21.92,16.26c-14.14,14.14-16.26,21.92-16.26,21.92Z"/>
+                    <path class="cls-2" d="m14.5,151.5l18-17v-20.26s-18-16.74-18-16.74c0,0-4,5-4,27,0,20,4,27,4,27Z"/>
+                    <path class="cls-2"
+                          d="m66.02,220.87l.71-24.75-14.32-14.32-24.57.89s.71,6.36,16.26,21.92c14.14,14.14,21.92,16.26,21.92,16.26Z"/>
+                    <path class="cls-2" d="m151.5,233.5l-17-18h-20.26s-16.74,18-16.74,18c0,0,5,4,27,4,20,0,27-4,27-4Z"/>
+                    <path class="cls-2"
+                          d="m220.87,181.98l-24.75-.71-14.32,14.32.89,24.57s6.36-.71,21.92-16.26c14.14-14.14,16.26-21.92,16.26-21.92Z"/>
+                    <path class="cls-2" d="m233.5,96.5l-18,17v20.26s18,16.74,18,16.74c0,0,4-5,4-27,0-20-4-27-4-27Z"/>
+                    <path class="cls-2"
+                          d="m181.98,27.13l-.71,24.75,14.32,14.32,24.57-.89s-.71-6.36-16.26-21.92c-14.14-14.14-21.92-16.26-21.92-16.26Z"/>
+                    <path class="cls-2"
+                          d="m123.5,32.5c-50.81,0-92,41.19-92,92s41.19,92,92,92,92-41.19,92-92-41.19-92-92-92Zm11,24.82c28.87,4.51,51.66,27.32,56.17,56.18h-41.17v-15h-15v-41.18Zm-22,.18v41h-15v15h-40.17c4.46-28.53,26.78-51.13,55.17-56Zm0,133.01c-28.06-4.82-50.19-26.95-55.01-55h40.01v15h15v40Zm-2.5-52.5v-27h27v27h-27Zm24.5,52.67v-40.17h15v-15h41c-4.88,28.39-27.48,50.71-56,55.17Z"/>
+                </g>
+            </g>
+        </svg>
+        <div>0/4</div>
+    </div>
+    <div class="topLayerRight">
+        <a class="buttonGradient" href="#">History</a>
+    </div>
+</div>
 <div id="map"></div>
-<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+<div class="dialogue">
+    <div class="person"></div>
+    <div class="text">Click Here</div>
+</div>
+<script crossorigin=""
         integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
-        crossorigin=""></script>
+        src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
 <script src="js/geoloc.js"></script>
+<script src="js/texts.js"></script>
+<script defer src="js/dialogue.js"></script>
 </body>
 </html>
