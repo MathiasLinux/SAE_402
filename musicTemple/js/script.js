@@ -1,27 +1,28 @@
-document.querySelector(".jouer").addEventListener("touchend",pleinEcran)
-
-function pleinEcran() {
-    document.documentElement.requestFullscreen()
-    this.style.display = "none"
-    document.querySelectorAll(".note").forEach(n => {
-        n.style.animationPlayState = "running";
-    })
-}
+// document.querySelector(".fullScreen").addEventListener("touchstart",fullScreen)
 
 let w = window.innerWidth;
 let h = window.innerHeight;
 
-let diametre = document.querySelector(".rythm").clientHeight;
+let music;
 
-let musicDelay = [[0,1,2],[3,4,5],[6,7,8],[9,10,11]];
+let widthNote;
+let widthPartition;
 
-document.querySelector("main").style.width=w+"px";
-document.querySelector("main").style.height=h+"px";
+let zoneG;
+let zoneD;
+
+// let musicDelay = [[0,1,2],[3,4,5],[6,7,8],[9,10,11]];
+let musicDelay = [
+                [11.2,11.6,14,14.5,16.9,17.3,21.3,22.7,23.2,25.6,26.1,28.5,29,32.8,36.2,37,37.7,38.2,38.6,44.4,57.5,58,60.4,60.9,63.3,63.8,67.6,71,72,72.5,73,73.5,79.2,80.7,81.2,83.6,84.1,86.6,87,90.9,92.3,92.8,95.2,95.7,98.2,98.6,102.7,104.1,104.7,109.1],
+                [12.1,14.9,17.85,20.8,23.7,26.6,29.5,32.4,34.3,34.8,35.4,35.8,39,43.9,58.5,61.4,64.3,67.1,69.1,69.5,70.1,70.6,73.9,78.7,81.7,84.6,87.6,90.4,93.3,96.2,99.1,102.1,105.2,108.5],
+                [19.8,20.1,21.7,31.4,31.7,33.2,42,43,43.3,44.9,66.1,66.4,68.1,76.8,77.8,78.1,79.7,89.3,89.6,91.4,101,101.3,103.2,107.4,107.7,109.75],
+                [13.1,13.5,15.9,16.35,18.8,19.25,20.4,24.6,25.1,27.55,28.05,30.4,30.85,32,40.1,40.5,41.1,41.5,42.5,43.5,59.4,59.9,62.3,62.8,65.2,65.7,66.7,74.9,75.4,75.9,76.3,77.3,78.3,82.6,83.1,85.4,86,88.4,88.95,89.9,94.2,94.7,97.1,97.7,100.1,100.5,101.6,106.3,106.8,107.9]
+            ]
 
 let oneClick = [false,false,false,false];
 
 let zones = document.querySelectorAll(".zone");
-let notes = [];
+let notes;
 
 let id = [1,1,1,1];
 
@@ -37,6 +38,51 @@ function resizeWindow(){
     h = window.innerHeight;
     document.querySelector("main").style.width=w+"px";
     document.querySelector("main").style.height=h+"px";
+    defDiametre();
+}
+
+function fullScreen(){
+    let elem = document.querySelector("main")
+    if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+        } else if (elem.webkitRequestFullscreen) { /* Safari */
+        elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) { /* IE11 */
+        elem.msRequestFullscreen();
+        }
+    resizeWindow();
+}
+
+function play() {
+    let J = document.querySelector(".jouer")
+    // this.style.display = "none"
+    J.style.transition = "1s"
+    J.style.transform = "translateY(-100%)";
+    J.style.opacity = "0%";
+    document.querySelectorAll(".note").forEach(n => {
+        n.style.animationPlayState = "running";
+    })
+    music = new sound("audio/WWYAMC_final.mp3");
+    music.play();
+}
+
+function sound(src) {
+    this.sound = document.createElement("audio");
+    this.sound.src = src;
+    this.sound.setAttribute("preload", "auto");
+    this.sound.setAttribute("controls", "none");
+    this.sound.style.display = "none";
+    document.body.appendChild(this.sound);
+    this.play = function(){
+        this.sound.play();
+    }
+    this.stop = function(){
+        this.sound.pause();
+    }    
+}
+
+function defDiametre(){
+    let diametre = document.querySelector(".rythm").clientHeight;
     zones.forEach(z => {
         z.style.width = diametre - 8 + "px";
         z.style.height = diametre - 8 + "px";
@@ -45,6 +91,10 @@ function resizeWindow(){
         n.style.width = diametre + "px";
         n.style.height = diametre + "px";
     })
+    widthNote = document.querySelector(".note").offsetWidth;
+    widthPartition = document.querySelector(".partition").offsetWidth;
+    zoneG = parseInt(document.querySelector(".G>.rythm>.zone").getBoundingClientRect().x.toFixed());
+    zoneD = parseInt(document.querySelector(".D>.rythm>.zone").getBoundingClientRect().x.toFixed());
 }
 
 function addNote(idRythm,idNote,delay){
@@ -73,6 +123,7 @@ function createMusic(musicDelay){
             }
         }
     }
+    notes = document.querySelectorAll(".note");
 }
 
 function defNote(){
@@ -105,7 +156,7 @@ function getCoord(note,oC){
     // console.log(note);
     if(oneClick[oC]==false){
         // console.log(oneClick[oC])
-        oneClick[oC]=true;
+        // oneClick[oC]=true;
         let partition = note.id.split("-")[0];
         let x = parseInt(note.getBoundingClientRect().x.toFixed())+widthNote/2;
         // x = x.x.toFixed();
@@ -114,7 +165,7 @@ function getCoord(note,oC){
 }
 
 function getScore(x,partition){
-    console.log(x)
+    // console.log(x)
     // console.log(partition)
     let good = widthNote*12.5/100;
     let perfect = widthNote*25/100;
@@ -148,8 +199,10 @@ function getScore(x,partition){
 }
 
 function getNote(){
+    for(let i=0; i<=3; i++)
+        oneClick[i]=false;
     let partition = this.id.split("-")[0];
-    // console.log(partition)
+    // console.log(partition);
     switch ((partition)) {
         case "n1":
             noteSuivante(0);
@@ -177,23 +230,13 @@ function noteSuivante(n) {
 
 createMusic(musicDelay);
 
-notes = document.querySelectorAll(".note");
-
-resizeWindow();
+defDiametre()
 
 window.addEventListener("resize", resizeWindow)
 
-let zoneG = parseInt(document.querySelector(".G>.rythm>.zone").getBoundingClientRect().x.toFixed());
-let zoneD = parseInt(document.querySelector(".D>.rythm>.zone").getBoundingClientRect().x.toFixed());
-
 defNote();
 
-let widthNote = document.querySelector(".note").offsetWidth;
-let widthPartition = document.querySelector(".partition").offsetWidth;
-
-// zones.forEach(Z =>{
-//     Z.addEventListener("click",toucheZone)
-// })
+document.querySelector(".jouer>button").addEventListener("touchstart",play)
 
 zones.forEach(z => {
     z.addEventListener("touchstart",toucheZone)
