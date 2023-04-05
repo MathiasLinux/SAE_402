@@ -82,5 +82,8 @@ export default function onload() {
 
         // switch to PLAY state
         me.state.change(me.state.PLAY);
+        if (me.End) {
+            console.log("trigger");
+        }
     });
 }

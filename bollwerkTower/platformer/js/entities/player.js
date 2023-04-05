@@ -93,7 +93,7 @@ class PlayerEntity extends me.Entity {
             this.renderable.flipX(false);
         }
 
-        if (me.input.isKeyPressed("jump") && this.jumpCount < 2) {
+        if (me.input.isKeyPressed("jump") && this.jumpCount < 200) {
             this.body.jumping = true;
             if (this.multipleJump <= 2) {
                 this.jumpCount++;

@@ -94,7 +94,7 @@ document.querySelector("body").addEventListener("touchmove", function (event) {
     //console.log(touch.pageX, touch.pageY)
 
     // Draw a line from the starting position to the current touch position
-    ctx.lineTo(touch.pageX - canvas.offsetLeft, touch.pageY - canvas.offsetTop);
+    ctx.lineTo(touch.pageX, touch.pageY);
     // Set the line color and width
     ctx.strokeStyle = "green";
     ctx.lineWidth = 4;
@@ -162,7 +162,7 @@ function checktouchPointsWheel() {
     for (let i = 0; i < alltouchPointsWheel.length; i++) {
         distance += checkDistance(alltouchPointsWheel[i]);
     }
-    if (distance > 350000 && distance < 650000) {
+    if (distance > 250000 && distance < 650000) {
         console.log("distance ok");
         console.log(distance);
         validateDistance = true;
@@ -213,10 +213,21 @@ document.querySelector("body").addEventListener("touchstart", function (event) {
  */
 document.querySelector(".verify").addEventListener("click", function () {
     if (checktouchPointsEurope() && checktouchPointsWheel()) {
-        console.log("ok"); // change this to a location.href for the next message of the game
+        document.cookie = "text=12; path=/";
+        location.href = "/main/map.html";
     } else {
         //reset the canvas and the arrays and display a message
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        //ctx.clearRect(0, 0, canvas.width, canvas.height);
+        //remove the canvas
+        canvas.remove();
+        //create a new canvas
+        canvas = document.createElement("canvas");
+        //add the canvas to the body before .verify
+        document.querySelector(".verify").before(canvas);
+        canvas = document.querySelector("canvas");
+        ctx = canvas.getContext("2d");
+        //set the size of the canvas
+        tailleCanvas();
         touchPointsEurope = [];
         touchPointsWheel = [];
         alltouchPointsEurope = [];
