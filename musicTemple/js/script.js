@@ -59,11 +59,11 @@ function play() {
     J.style.transition = "1s"
     J.style.transform = "translateY(-100%)";
     J.style.opacity = "0%";
+    music = new sound("audio/WWYAMC_final.mp3");
+    music.play();
     document.querySelectorAll(".note").forEach(n => {
         n.style.animationPlayState = "running";
     })
-    music = new sound("audio/WWYAMC_final.mp3");
-    music.play();
 }
 
 function sound(src) {
