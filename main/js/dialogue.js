@@ -30,6 +30,17 @@ console.log(getCookie("text"));
 if (getCookie("text") !== "" && getCookie("text") !== null) {
     numberText = parseInt(getCookie("text"));
 }
+if (getCookie("text") !== "" && getCookie("text") !== null && getCookie("numberText") !== "null" && getCookie("numberText") !== null) {
+    if (parseInt(getCookie("numberText")) > parseInt(getCookie("text"))) {
+        numberText = parseInt(getCookie("numberText"));
+    }
+}
+//if cookie text doesn't exist, if cookie numberText exist, use it for numberText
+if (getCookie("text") === "" || getCookie("text") === null) {
+    if (getCookie("numberText") !== "null" && getCookie("numberText") !== null) {
+        numberText = parseInt(getCookie("numberText"));
+    }
+}
 
 document.querySelector(".dialogue").addEventListener("touchstart", nextText)
 
