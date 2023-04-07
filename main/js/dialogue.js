@@ -2,6 +2,12 @@ let t = 0;
 
 let numberText = 0;
 
+document.querySelector(".historyButton").addEventListener("click", (e) => {
+    e.preventDefault();
+    document.cookie = "numberText=" + numberText + "; path=/";
+    location.href = "/main/history.html";
+});
+
 function getCookie(name) {
     let cookieValue = null;
     if (document.cookie && document.cookie !== '') {
