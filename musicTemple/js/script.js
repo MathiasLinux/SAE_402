@@ -55,15 +55,14 @@ function fullScreen(){
 
 function play() {
     let J = document.querySelector(".jouer")
-    // this.style.display = "none"
     J.style.transition = "1s"
     J.style.transform = "translateY(-100%)";
     J.style.opacity = "0%";
-    music = new sound("audio/WWYAMC_final.mp3");
-    music.play();
     document.querySelectorAll(".note").forEach(n => {
         n.style.animationPlayState = "running";
     })
+    music = new sound("audio/WWYAMC_final.mp3");
+    music.play();
 }
 
 function sound(src) {
@@ -153,23 +152,17 @@ function toucheZone(){
 }
 
 function getCoord(note,oC){
-    // console.log(note);
     if(oneClick[oC]==false){
-        // console.log(oneClick[oC])
-        // oneClick[oC]=true;
+        oneClick[oC]=true;
         let partition = note.id.split("-")[0];
         let x = parseInt(note.getBoundingClientRect().x.toFixed())+widthNote/2;
-        // x = x.x.toFixed();
         getScore(x,partition);
     }
 }
 
 function getScore(x,partition){
-    // console.log(x)
-    // console.log(partition)
     let good = widthNote*12.5/100;
     let perfect = widthNote*25/100;
-    // let marge = widthNote*12.5/100;
     if(partition == "n1" || partition == "n2"){
         if(x>=(zoneG + perfect) && x<=(zoneG + widthNote - perfect)){
             document.querySelector(".message").innerHTML="<h1>Perfect</h1>";
@@ -202,7 +195,6 @@ function getNote(){
     for(let i=0; i<=3; i++)
         oneClick[i]=false;
     let partition = this.id.split("-")[0];
-    // console.log(partition);
     switch ((partition)) {
         case "n1":
             noteSuivante(0);
@@ -222,15 +214,14 @@ function getNote(){
 }
 
 function noteSuivante(n) {
-    oneClick[n]=false;
+    // oneClick[n]=false;
     id[n]+=1;
-    // console.log(id[n]);
     defNote();
 }
 
 createMusic(musicDelay);
 
-defDiametre()
+// defDiametre()
 
 window.addEventListener("resize", resizeWindow)
 
