@@ -61,7 +61,9 @@ function play() {
     document.querySelectorAll(".note").forEach(n => {
         n.style.animationPlayState = "running";
     })
-    music = new sound("audio/WWYAMC_final.mp3");
+    // music = new sound("audio/WWYAMC_final.mp3");
+    music = new sound("audio/WWYAMC_fast.mp3");
+    document.querySelector("audio").remove();
     music.play();
 }
 
@@ -70,6 +72,8 @@ function sound(src) {
     this.sound.src = src;
     this.sound.setAttribute("preload", "auto");
     this.sound.setAttribute("controls", "none");
+    this.sound.setAttribute("onended","getScoreFinal()")
+    // this.sound.id = "WWYAMC"
     this.sound.style.display = "none";
     document.body.appendChild(this.sound);
     this.play = function(){
@@ -94,6 +98,7 @@ function defDiametre(){
     widthPartition = document.querySelector(".partition").offsetWidth;
     zoneG = parseInt(document.querySelector(".G>.rythm>.zone").getBoundingClientRect().x.toFixed());
     zoneD = parseInt(document.querySelector(".D>.rythm>.zone").getBoundingClientRect().x.toFixed());
+    defNote();
 }
 
 function addNote(idRythm,idNote,delay){
@@ -214,18 +219,24 @@ function getNote(){
 }
 
 function noteSuivante(n) {
-    // oneClick[n]=false;
     id[n]+=1;
     defNote();
 }
 
+function getScoreFinal() {
+    score = 10000;
+    if(score>=10000){
+        document.cookie = "text=14; path=/"; //14 C'est ce qu'il faut pour musicTemple
+        location.href = "/main/map.html";
+    }
+    else{
+        document.querySelector(".scoreFinal").style.display="grid";
+    }
+}
+
 createMusic(musicDelay);
 
-// defDiametre()
-
 window.addEventListener("resize", resizeWindow)
-
-defNote();
 
 document.querySelector(".jouer>button").addEventListener("touchstart",play)
 
@@ -236,3 +247,5 @@ zones.forEach(z => {
 notes.forEach(N => {
     N.addEventListener("animationend",getNote)
 })
+
+// document.querySelector("audio#WWYAMC").addEventListener("ended",getScoreFinal)
