@@ -24,7 +24,7 @@ main{
     align-items: center;
 }
 
-.jouer{
+.jouer, .scoreFinal{
     position: relative;
     background-color: #1E212B;
     opacity: 90%;
@@ -37,12 +37,22 @@ main{
     align-items: center;
 }
 
-.jouer>p{
+.scoreFinal{
+    position: absolute;
+    display: none;
+    z-index: 10;
+}
+
+.jouer>p,.scoreFinal>p{
     opacity: 100%;
     margin: 2% 4%;
 }
 
-.jouer>button{
+.scoreFinal>p{
+    margin: 0%;
+}
+
+.jouer>button,.scoreFinal>a>button{
     background-color: #FFAE00;
     padding: 2% 4%;
     margin: auto;
