@@ -645,7 +645,7 @@ const game =
         },
         {
             "name": "bollwerk",
-            "url": "/bollwerkTower/platformer/index.html",
+            "url": "/bollwerkTower/platformer/before.html",
         },
         {
             "name": "themur",
