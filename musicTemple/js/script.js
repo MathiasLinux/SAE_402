@@ -224,7 +224,7 @@ function noteSuivante(n) {
 }
 
 function getScoreFinal() {
-    score = 10000;
+//     score = 10000;
     if(score>=10000){
         document.cookie = "text=14; path=/"; //14 C'est ce qu'il faut pour musicTemple
         location.href = "/main/map.html";
