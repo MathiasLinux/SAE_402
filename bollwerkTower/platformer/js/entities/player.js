@@ -20,7 +20,10 @@ class PlayerEntity extends me.Entity {
 
         this.multipleJump = 1;
 
-        // variable to check if the player jump more than twice
+        /*******
+         * Création d'une variable qui permet de connaitre le nombre de sauts pour le limité à 2
+         * @type {number}
+         */
         this.jumpCount = 0;
 
         // set the viewport to follow this renderable on both axis, and enable damping
@@ -93,7 +96,12 @@ class PlayerEntity extends me.Entity {
             this.renderable.flipX(false);
         }
 
-        if (me.input.isKeyPressed("jump") && this.jumpCount < 200) {
+        /**********
+         * Mise en place de la vérification du nombre de sauts pour le limiter à 2 dans la version final du jeu
+         * Pendant la phase de test, le nombre de sauts est limité à 200 pour faciliter les tests
+         * @type {boolean}
+         */
+        if (me.input.isKeyPressed("jump") && this.jumpCount < 2) {
             this.body.jumping = true;
             if (this.multipleJump <= 2) {
                 this.jumpCount++;
@@ -129,6 +137,20 @@ class PlayerEntity extends me.Entity {
             return true;
         }
 
+        /********
+         * Mise en place de la vérification de la position du joueur pour le faire gagner le niveau
+         * Ensuite le joueur va se faire rediriger vers les dialogues
+         * @type {boolean}
+         */
+        if (this.pos.y < 220 && this.pos.x > 980 && this.pos.x < 1055) {
+            me.game.world.removeChild(this);
+            me.game.viewport.fadeIn("#fff", 150, function () {
+                document.cookie = "text=10; path=/";
+                window.location.href = "/main/map.html";
+            });
+            return true;
+        }
+
         // check if we moved (an "idle" animation would definitely be cleaner)
         if (this.body.vel.x !== 0 || this.body.vel.y !== 0 ||
             (this.renderable && this.renderable.isFlickering())
@@ -137,6 +159,7 @@ class PlayerEntity extends me.Entity {
             return true;
         }
         return false;
+
     }
 
 
