@@ -8,9 +8,11 @@ body{
 
 main{
     position: relative;
-    background-color: #1E212B;
-    /* height: 100vh;
-    width: 100vw; */
+    /* background-color: #1E212B; */
+    background-image: url("../img/img_TSE.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    image-rendering: pixelated;
 }
 
 .fullScreen{
@@ -60,11 +62,9 @@ main{
 
 .rythm{
     position: absolute;
-    /* width: 320px;
-    height: 160px; */
     width: 30%;
     height: 30%;
-    border: white solid 4px;
+    border: black solid 4px;
     z-index: 5;
 }
 
@@ -100,7 +100,7 @@ main{
     position: absolute;
     /* width: 152px;
     height: 152px; */
-    border: red solid 4px;
+    border: cyan solid 4px;
     border-radius: 100%;
     z-index: 5;
 }
@@ -115,10 +115,8 @@ main{
 
 .note{
     position: absolute;
-    /* width: 160px;
-    height: 160px; */
-    background-color: red;
-    border: red solid 0px;
+    background-color: #00ffff;
+    border: cyan solid 0px;
     border-radius: 100%;
     opacity: 0%;
 }
@@ -137,7 +135,6 @@ main{
 
 .partition{
     height: 2px;
-    /* width: 768px; */
     width: 50vw;
     position: absolute;
     z-index: 4;
@@ -152,18 +149,32 @@ main{
 }
 
 .score{
+    color: white;
     font-size: 64px;
     position: absolute;
-    top: 50%;
+    top: 0%;
     left: 50%;
-    transform: translate(-50%,-100%);
+    transform: translateX(-50%);
 }
 
 .message{
+    color: #0CAEE8;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%,-50%);
+}
+
+.perfect{
+    color: greenyellow;
+}
+
+.good{
+    color: orange;
+}
+
+.miss{
+    color: red;
 }
 
 @keyframes bouge_noteG{

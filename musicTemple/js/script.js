@@ -170,35 +170,33 @@ function getScore(x,partition){
     let perfect = widthNote*25/100;
     if(partition == "n1" || partition == "n2"){
         if(x>=(zoneG + perfect) && x<=(zoneG + widthNote - perfect)){
-            document.querySelector(".message").innerHTML="<h1>Perfect</h1>";
+            document.querySelector(".message").innerHTML="<h1 class='perfect'>Perfect</h1>";
             score+=100;
         }
         else if(x>=(zoneG + good) && x<=(zoneG + widthNote -good)){
-            document.querySelector(".message").innerHTML="<h2>Good</h2>";
+            document.querySelector(".message").innerHTML="<h2 class='good'>Good</h2>";
             score+=50;
         }
         else
-            document.querySelector(".message").innerHTML="<h3>Miss</h3>";
+            document.querySelector(".message").innerHTML="<h3 class='miss'>Miss</h3>";
     }
     else{
         if(x>=(zoneD + perfect) && x<=(zoneD + widthNote - perfect)){
-            document.querySelector(".message").innerHTML="<h1>Perfect</h1>";
+            document.querySelector(".message").innerHTML="<h1 class='perfect'>Perfect</h1>";
             score+=100;
         }
         else if(x>=(zoneD + good) && x<=(zoneD + widthNote - good)){
-            document.querySelector(".message").innerHTML="<h2>Good</h2>";
+            document.querySelector(".message").innerHTML="<h2 class='good'>Good</h2>";
             score+=50;
         }
         else
-            document.querySelector(".message").innerHTML="<h3>Miss</h3>";
+            document.querySelector(".message").innerHTML="<h3 class='miss'>Miss</h3>";
     }
 
     document.querySelector(".score").innerText=score;
 }
 
 function getNote(){
-    for(let i=0; i<=3; i++)
-        oneClick[i]=false;
     let partition = this.id.split("-")[0];
     switch ((partition)) {
         case "n1":
@@ -219,6 +217,10 @@ function getNote(){
 }
 
 function noteSuivante(n) {
+    if(oneClick[n]==false)
+        document.querySelector(".message").innerHTML="<h3 class='miss'>Miss</h3>";
+    for(let i=0; i<=3; i++)
+        oneClick[i]=false;
     id[n]+=1;
     defNote();
 }
