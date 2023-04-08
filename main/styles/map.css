@@ -85,3 +85,12 @@ html, body, #map {
     font-size: 20px;
     margin-bottom: 20px;
 }
+
+.multipleChoice {
+    margin-top: 10px;
+}
+
+.choice {
+    margin-top: 10px;
+    cursor: pointer;
+}
