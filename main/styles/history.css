@@ -2,6 +2,7 @@
 
 :root {
     --background-color: #270040;
+    --magenta: #A67F8E;
 }
 
 body {
@@ -11,19 +12,13 @@ body {
 }
 
 
-html, body, #map {
+html, body {
     height: 100%;
     width: 100vw;
-}
-
-.leaflet-top {
-    bottom: 2%;
-    top: auto;
+    background-color: var(--magenta);
 }
 
 .topLayer {
-    position: fixed;
-    z-index: 1000;
     width: 100%;
     background-color: var(--background-color);
     display: flex;
@@ -32,6 +27,7 @@ html, body, #map {
     text-align: center;
     padding: 5% 0 5% 0;
     border-radius: 0 0 50px 50px;
+    margin-bottom: 20px;
 }
 
 .topLayerLeft {
@@ -65,32 +61,28 @@ html, body, #map {
     font-size: 18px;
 }
 
-.dialogue {
-    display: none;
-    position: fixed;
+.history {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    margin: 0 5% 0 5%;
+}
+
+.text {
     background-color: var(--background-color);
     color: white;
-    border-radius: 16px;
-    padding: 4% 4%;
-    width: 72%;
-    height: 38%;
-    bottom: 2%;
-    left: 50%;
-    transform: translateX(-50%);
-    cursor: pointer;
-    z-index: 10000;
+    padding: 5%;
+    border-radius: 20px;
+    margin-bottom: 5%;
 }
 
-.dialogue .person {
-    font-size: 20px;
-    margin-bottom: 20px;
+.title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 10%;
 }
 
-.multipleChoice {
-    margin-top: 10px;
-}
-
-.choice {
-    margin-top: 10px;
-    cursor: pointer;
+.firstTitle {
+    margin-top: 0;
 }

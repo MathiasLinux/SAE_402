@@ -200,7 +200,10 @@ class VirtualJoypad extends me.Container {
         this.name = "VirtualJoypad";
 
         // instance of the virtual joypad
-        // Change the position to be on the bottom left of the screen
+        /*******
+         * Changement de la position du joypad pour qu'il soit plus adapté au format mobile
+         * @type {Joypad}
+         */
         this.joypad = new Joypad(
             30,
             me.game.viewport.height - 180
@@ -217,6 +220,10 @@ class VirtualJoypad extends me.Container {
 
         // re-position the button in case of
         // size/orientation change
+        /********
+         * Changement de la position du bouton pour qu'il soit plus adapté au format mobile
+         * @type {VirtualJoypad}
+         */
         var self = this;
         me.event.on(
             me.event.VIEWPORT_ONRESIZE, function (width, height) {

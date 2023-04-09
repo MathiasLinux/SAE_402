@@ -15,6 +15,9 @@ var resources = [
      * { name: "example01", type: "tmx", src: "data/map/example01.tmx" },
      * { name: "example01", type: "tmx", src: "data/map/example01.json" },
      */
+    /*******
+     * Changement de la map pour la map custom faite pour le jeu
+     */
     {name: "map1", type: "tmx", src: "data/map/map1.tmx"},
     /*{name: "map2", type: "tmx", src: "data/map/map2.json"},*/
     //{name: "map2", type: "tmx", src: "data/map/map2.tmx"},
@@ -26,6 +29,9 @@ var resources = [
      * { name: "example01", type: "tsx", src: "data/map/example01.json" },
      */
     //{ name: "tilesetest",         type: "tsx",    src: "data/map/tilesettest.json" },
+    /*******
+     * Création de deux nouveaux tilseset pour la map custom faite pour le jeu
+     */
     {name: "tilesettest", type: "tsx", src: "data/map/tilesettest.tsx"},
     {name: "tileset_platform", type: "tsx", src: "data/map/tileset_platform.tsx"},
     {name: "tileset", type: "tsx", src: "data/map/tileset.tsx"},

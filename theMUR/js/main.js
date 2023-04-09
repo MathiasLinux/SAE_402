@@ -125,12 +125,12 @@ function checktouchPointsEurope() {
         distance += checkDistance(alltouchPointsEurope[i]);
     }
     if (distance > 150000 && distance < 450000) {
-        console.log("distance ok");
-        console.log(distance);
+        //console.log("distance ok");
+        //console.log(distance);
         validateDistance = true;
     } else {
-        console.log("distance pas ok");
-        console.log(distance);
+        //console.log("distance pas ok");
+        //console.log(distance);
         validateDistance = false;
     }
     //if 80% of the touch points are good return true
@@ -163,12 +163,12 @@ function checktouchPointsWheel() {
         distance += checkDistance(alltouchPointsWheel[i]);
     }
     if (distance > 250000 && distance < 650000) {
-        console.log("distance ok");
-        console.log(distance);
+        //console.log("distance ok");
+        //console.log(distance);
         validateDistance = true;
     } else {
-        console.log("distance pas ok");
-        console.log(distance);
+        //console.log("distance pas ok");
+        //console.log(distance);
         validateDistance = false;
     }
     //if 80% of the touch points are good return true
