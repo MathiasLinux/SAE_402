@@ -21,7 +21,7 @@ main{
     align-items: center;
 }
 
-.jouer{
+.jouer, .scoreFinal{
     position: relative;
     background-color: #1E212B;
     opacity: 90%;
@@ -34,12 +34,22 @@ main{
     align-items: center;
 }
 
-.jouer>p{
+.scoreFinal{
+    position: absolute;
+    display: none;
+    z-index: 10;
+}
+
+.jouer>p,.scoreFinal>p{
     opacity: 100%;
     margin: 2% 4%;
 }
 
-.jouer>button{
+.scoreFinal>p{
+    margin: 0%;
+}
+
+.jouer>button,.scoreFinal>a>button{
     background-color: #FFAE00;
     opacity: 100%;
     padding: 2% 4%;
@@ -91,6 +101,10 @@ button.go{
     top: 0%;
     left: 50%;
     transform: translateX(-50%);
+    background-color: cyan;
+    border: white solid 2px;
+    padding: 1% 2%;
+    font-size: 20px;
 }
 
 button.nv_next{

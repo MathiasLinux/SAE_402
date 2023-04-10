@@ -54,7 +54,7 @@ let solG = [];
 let solD = [];
 let soly = [];
 
-let nv = 2;
+let nv = 0;
 let nvmax = 5;
 
 function fullScreen(){
@@ -87,11 +87,12 @@ function play() {
 }
 
 function go(){
-    console.log(jx,jy)
+    // console.log(jx,jy)
+    
     if(jx>=(w - jw))
         return next_nv();
     if(jy>=h)
-        return console.log("LOSE");
+        return document.querySelector(".scoreFinal").style.display="grid";
     if(getCollision()==false)
         jy+=vy;
     jx+=vx;
@@ -100,6 +101,9 @@ function go(){
 }
 
 function getSol(){
+    document.querySelector(".sols").innerHTML="";
+    document.querySelector(".menuSol>.sols").innerHTML="";
+
     Lsol[nv].forEach(Ls => {
         if(Ls.w != 0)
             document.querySelector(".sols").innerHTML+="<div class='sol' style='width:"+Ls.w+"%; top:"+Ls.t+"%; left:"+Ls.l+"%;' id='"+Ls.l+"'></div>"
@@ -121,7 +125,16 @@ function getSol(){
         solD.push(parseInt(s.getBoundingClientRect().x.toFixed()) + parseInt(s.getBoundingClientRect().width.toFixed()));
         soly.push(parseInt(s.getBoundingClientRect().y.toFixed()) - jh);
     })
-    console.log(solG, solD, soly)
+
+    // console.log(solG, solD, soly)
+
+    document.querySelectorAll(".addSol").forEach(aS => {
+        aS.addEventListener("touchstart",openMenu)
+    })
+
+    document.querySelectorAll(".menuSol>.sols>.sol").forEach(mSSS => {
+        mSSS.addEventListener("touchstart",addSol)
+    })
 }
 
 function getCollision(){
@@ -129,7 +142,7 @@ function getCollision(){
     for(let i=0; i<soly.length; i++)
         if(((jx + jw)>=solG[i] && jx<=solD[i]) && jy==soly[i])
             collision=true
-    console.log(collision)
+    // console.log(collision)
     return collision;
 }
 
@@ -163,18 +176,7 @@ function addSol(){
             Ps.taken = true;
     })
 
-    document.querySelector(".sols").innerHTML="";
-    document.querySelector(".menuSol>.sols").innerHTML="";
-
     getSol();
-
-    document.querySelectorAll(".addSol").forEach(aS => {
-        aS.addEventListener("touchstart",openMenu)
-    })
-
-    document.querySelectorAll(".menuSol>.sols>.sol").forEach(mSSS => {
-        mSSS.addEventListener("touchstart",addSol)
-    })
 }
 
 window.addEventListener("resize", resizeWindow)
