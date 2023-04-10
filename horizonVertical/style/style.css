@@ -52,6 +52,40 @@ main{
     background-color: #7D5651;
 }
 
+.addSol{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translate(-50%,-50%);
+    border: white solid 0px;
+    background-color: #BC3F51;
+    border-radius: 100%;
+    width: 48px;
+    height: 48px;
+}
+
+.menuSol{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 30%;
+    height: 100%;
+    background-color: #1E212B;
+    transform: translateX(-100%);
+    transition: 0.2s;
+}
+
+.menuSol.open{
+    transform: translateX(0%);
+}
+
+.menuSol>.sols>.sol{
+    position: static;
+    padding: 2%;
+    margin: 16% auto;
+}
+
 button.go{
     position: absolute;
     top: 0%;
@@ -70,5 +104,4 @@ button.nv_next{
     position: absolute;
     top: 0%;
     left: 0%;
-    z-index: 0.5;
 }
