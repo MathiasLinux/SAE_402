@@ -10,24 +10,52 @@ let jw = parseInt(j.getBoundingClientRect().width.toFixed());
 
 let Lsol = [
     [
-        {w : 100, t : 30, l : 0}
+        {w : 30, t : 30, l : 0},
+        {w : 30, t : 90, l : 70},
+        {w : 0, t : 60, l : 35}
     ],
     [
-        {w : 40, t : 50, l : 0},
-        {w : 55, t : 80, l : 45}
+        {w : 20, t : 20, l : 0},
+        {w : 0, t : 40, l : 25},
+        {w : 0, t : 60, l : 45},
+        {w : 20, t : 80, l : 80}
     ],
     [
-        {w : 20, t : 25, l : 0},
-        {w : 20, t : 40, l : 25}
+        {w : 10, t : 20, l : 0},
+        {w : 0, t : 40, l : 15},
+        {w : 0, t : 60, l : 30},
+        {w : 0, t : 70, l : 55},
+        {w : 10, t : 80, l : 90}
     ]
 ]
+
+let Psol = [
+    [
+        {w : 10, taken : false},
+        {w : 20, taken : false},
+        {w : 30, taken : false}
+    ],
+    [
+        {w : 10, taken : false},
+        {w : 20, taken : false},
+        {w : 30, taken : false}
+    ],
+    [
+        {w : 10, taken : false},
+        {w : 20, taken : false},
+        {w : 30, taken : false}
+    ]
+]
+
+let addSolV = 0;
 
 let sol;
 let solG = [];
 let solD = [];
 let soly = [];
 
-let nv = 0;
+let nv = 2;
+let nvmax = 5;
 
 function fullScreen(){
     let elem = document.querySelector("main")
@@ -59,6 +87,7 @@ function play() {
 }
 
 function go(){
+    console.log(jx,jy)
     if(jx>=(w - jw))
         return next_nv();
     if(jy>=h)
@@ -72,24 +101,35 @@ function go(){
 
 function getSol(){
     Lsol[nv].forEach(Ls => {
-        document.querySelector(".sols").innerHTML+="<div class='sol' style='width:"+Ls.w+"%; top:"+Ls.t+"%; left:"+Ls.l+"%;'></div>"
+        if(Ls.w != 0)
+            document.querySelector(".sols").innerHTML+="<div class='sol' style='width:"+Ls.w+"%; top:"+Ls.t+"%; left:"+Ls.l+"%;' id='"+Ls.l+"'></div>"
+        else
+            document.querySelector(".sols").innerHTML+="<div class='addSol' style='top:"+Ls.t+"%; left:"+Ls.l+"%;' id='"+Ls.l+"'><img src='img/plus.svg' alt='Add a platform image'></div>"
     })
+
+    Psol[nv].forEach(Ps =>{
+        if(Ps.taken==false)
+            document.querySelector(".menuSol>.sols").innerHTML+="<div class='sol' style='width:"+Ps.w+"%;' id='"+Ps.w+"'></div>";
+    })
+
     solG = [];
     solD = [];
     soly = [];
-    sol = document.querySelectorAll(".sol");
+    sol = document.querySelectorAll("main>.sols>.sol");
     sol.forEach(s => {
         solG.push(parseInt(s.getBoundingClientRect().x.toFixed()));
         solD.push(parseInt(s.getBoundingClientRect().x.toFixed()) + parseInt(s.getBoundingClientRect().width.toFixed()));
         soly.push(parseInt(s.getBoundingClientRect().y.toFixed()) - jh);
     })
+    console.log(solG, solD, soly)
 }
 
 function getCollision(){
     let collision = false;
     for(let i=0; i<soly.length; i++)
-        if(((jx + parseInt(j.getBoundingClientRect().width.toFixed()))>=solG[i] && jx<=solD[i]) && jy==soly[i])
+        if(((jx + jw)>=solG[i] && jx<=solD[i]) && jy==soly[i])
             collision=true
+    console.log(collision)
     return collision;
 }
 
@@ -102,6 +142,41 @@ function next_nv(){
     getSol();
 }
 
+function openMenu(){
+    addSolV = this.id;
+    // console.log(addSolV);
+    document.querySelector(".menuSol").classList.add("open");
+}
+
+function closeMenu(){
+    document.querySelector(".menuSol").classList.remove("open");
+}
+
+function addSol(){
+    Lsol[nv].forEach(Ls =>{
+        if(Ls.l==addSolV)
+            Ls.w = this.id;
+    })
+
+    Psol[nv].forEach(Ps => {
+        if(Ps.w==this.id)
+            Ps.taken = true;
+    })
+
+    document.querySelector(".sols").innerHTML="";
+    document.querySelector(".menuSol>.sols").innerHTML="";
+
+    getSol();
+
+    document.querySelectorAll(".addSol").forEach(aS => {
+        aS.addEventListener("touchstart",openMenu)
+    })
+
+    document.querySelectorAll(".menuSol>.sols>.sol").forEach(mSSS => {
+        mSSS.addEventListener("touchstart",addSol)
+    })
+}
+
 window.addEventListener("resize", resizeWindow)
 
 document.querySelector(".jouer>button").addEventListener("touchstart",play)
@@ -109,5 +184,15 @@ document.querySelector(".jouer>button").addEventListener("touchstart",play)
 resizeWindow();
 
 document.querySelector("button.go").addEventListener("touchstart",go)
+
+document.querySelectorAll(".addSol").forEach(aS => {
+    aS.addEventListener("touchstart",openMenu)
+})
+
+document.querySelector(".menuSol>.closeMenu>img").addEventListener("touchstart",closeMenu)
+
+document.querySelectorAll(".menuSol>.sols>.sol").forEach(mSSS => {
+    mSSS.addEventListener("touchstart",addSol)
+})
 
 // document.querySelector("button.nv_next").addEventListener("touchstart",next_nv)
