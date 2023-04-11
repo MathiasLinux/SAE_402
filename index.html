@@ -6,6 +6,7 @@
           name="viewport">
     <meta content="ie=edge" http-equiv="X-UA-Compatible">
     <title>SGM</title>
+    <link href="manifest.json" rel="manifest">
     <link href="style.css" rel="stylesheet">
 </head>
 <body>
@@ -14,5 +15,11 @@
     <h1>Welcome to Season's Gear Mystery</h1>
     <a href="main/map.html">Let's go !</a>
 </main>
+<script>
+    /* Le SW en premier pour éviter les problèmes */
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js');
+    }
+</script>
 </body>
 </html>
