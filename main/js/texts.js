@@ -877,6 +877,93 @@ const text = [
             "multipleChoice": false,
             "game": "horizonVertical",
         },
+    ],
+    [
+        {
+            "person": "Murphy",
+            "text": "Not only did you manage to get out on your own…",
+            "change": false,
+            "launchGame": false,
+            "multipleChoice": false,
+        },
+        {
+            "person": "Murphy",
+            "text": "But in addition, you got the other part of the gear!",
+            "change": false,
+            "launchGame": false,
+            "multipleChoice": false,
+        },
+        {
+            "person": "Murphy",
+            "text": "I would like to apologize for what just happened.<br><br>" +
+                "For a moment, I thought I had doomed you to death.\n",
+            "change": false,
+            "launchGame": false,
+            "multipleChoice": false,
+        },
+        {
+            "person": "Murphy",
+            "text": "Fortunately, everything went well!",
+            "change": false,
+            "launchGame": false,
+            "multipleChoice": false,
+        },
+        {
+            "person": "Murphy",
+            "text": "We have recovered the 4 gears, it’s incredible!",
+            "change": false,
+            "launchGame": false,
+            "multipleChoice": false,
+        },
+        {
+            "person": "Murphy",
+            "text": "Interesting! I think that we have a last spot to look at.<br><br>" +
+                "I think I know this area…",
+            "change": false,
+            "launchGame": false,
+            "multipleChoice": false,
+        },
+        {
+            "person": "Murphy",
+            "text": "It’s the Europe Tower!",
+            "change": false,
+            "launchGame": false,
+            "multipleChoice": false,
+        },
+        {
+            "person": "<br>",
+            "text": "<i>A new marker appears on the map.</i>",
+            "change": false,
+            "launchGame": false,
+            "multipleChoice": false,
+        },
+        {
+            "person": "",
+            "text": "",
+            "change": true,
+            "launchGame": false,
+            "multipleChoice": false,
+            "x": 47.749818806234586,
+            "y": 7.340382776938475,
+            "icon_name": "europeTower",
+        }
+    ],
+    [
+        {
+            "person": "Murphy",
+            "text": "I think that we can use these gears for the Europe Tower. It is possible that it’s the center of the time anomaly.",
+            "change": false,
+            "launchGame": false,
+            "multipleChoice": false,
+        },
+        {
+            "person": "",
+            "text": "",
+            "change": false,
+            "launchGame": true,
+            "multipleChoice": false,
+            "game": "europeTower",
+        }
     ]
 ];
 const game =
@@ -912,6 +999,10 @@ const game =
         {
             "name": "horizonVertical",
             "url": "/horizonVertical/index.html",
+        },
+        {
+            "name": "europeTower",
+            "url": "/europeTower/index.html",
         }
     ];
 
@@ -947,5 +1038,9 @@ const iconList = [
     {
         "name": "horizonVertical",
         "url": "/main/img/map_icons/paint-roller.png",
+    },
+    {
+        "name": "europeTower",
+        "url": "/main/img/map_icons/wheel.svg",
     }
 ]

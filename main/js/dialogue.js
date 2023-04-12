@@ -42,6 +42,16 @@ if (getCookie("text") === "" || getCookie("text") === null) {
     }
 }
 
+if (numberText >= 5 && numberText < 9) {
+    document.querySelector(".topLayerLeft div").innerHTML = "1/4";
+} else if (numberText >= 9 && numberText < 13) {
+    document.querySelector(".topLayerLeft div").innerHTML = "2/4";
+} else if (numberText >= 13 && numberText < 17) {
+    document.querySelector(".topLayerLeft div").innerHTML = "3/4";
+} else if (numberText >= 17) {
+    document.querySelector(".topLayerLeft div").innerHTML = "4/4";
+}
+
 document.querySelector(".dialogue").addEventListener("touchstart", nextText)
 
 function nextText(event) {

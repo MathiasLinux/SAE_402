@@ -62,6 +62,22 @@ let titles = [
     {
         "title": "After the Temple Saint-Étienne",
         "number": 14
+    },
+    {
+        "title": "",
+        "number": 15
+    },
+    {
+        "title": "Horizon Vertical",
+        "number": 16
+    },
+    {
+        "title": "After Horizon Vertical",
+        "number": 17
+    },
+    {
+        "title": "Europe Tower",
+        "number": 18
     }
 ]
 
