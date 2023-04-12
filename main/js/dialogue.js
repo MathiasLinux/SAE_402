@@ -139,7 +139,7 @@ function nextText(event) {
             console.log(i + 1 + "i");
             if ((i + 1) === text[numberText][t].correctAnswer) {
                 console.log("correct answer found");
-                div2.addEventListener("click", () => {
+                div2.addEventListener("change", () => {
                     console.log("correct answer clicked");
                     t = 0;
                     numberText++;
