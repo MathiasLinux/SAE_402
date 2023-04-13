@@ -2,13 +2,108 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Market</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>UNDERCOOKED MDRRRR GENRE C PAS ASSEZ CUIT</title>
 </head>
 <body>
-<h1>Market Game</h1>
-<a href="/main/map.html">Go to next dialog</a>
-<script>
-    document.cookie = "text=2; path=/";
-</script>
+<div class="landscape">
+    Please play in landscape mode !
+</div>
+
+
+<div class="ecranDeDepart">
+  <h2>UNDERCOOKED</h2>
+  <p>The goal is to give the clients what they want. </p>
+  <div>
+    <p>There are three ingredients :</p>
+    <div class="tipsIng">
+      <div>
+        <img src="img/MEAT.png" alt="meat" width="32px" height="32px">
+        <p>Meat</p>
+      </div>
+      <div>
+        <img src="img/VEGETABLES.png" alt="vegetables" width="32px" height="32px">
+        <p>Vegetables</p>
+      </div>
+      <div>
+        <img src="img/POTATO.png" alt="potato" width="32px" height="32px">
+        <p>Potatoes</p>
+      </div>
+    </div>
+  </div>
+  <p><img src="img/COOKING POT.png" alt="cooking pot" width="32px" height="32px"> : Put your ingredients one by one in the right order here to fulfill a client's request.</p>
+  <p><img src="img/SERVE.png" width="32px" height="32px"> : Go here to serve the client when you have finished cooking.</p>
+  <p><img src="img/TRASH CAN.png" width="32px" height="32px"> : If you have done something wrong, go to the trash to retry.</p>
+
+  <div class="lancerLeJeu" onclick="fullScreen()">BEGIN THE GAME</div>
+
+</div>
+    <div class="boutonMenuR">
+      R
+    </div>
+
+    <div class="ecranDeFin">
+      <p>Final result :</p>
+      <p class="pointsFinaux">10</p>
+      <p class="phrasesFin">oe</p>
+      <a href="index.html" class="buttonEnd retry">RETRY</a>
+      <div class="buttonEnd continue">CONTINUE</div>
+    </div>
+
+  <div class="conteneur">
+    <div class="menuRecettes">
+      <h2>Liste des recettes</h2>
+      <div class="listeRecettes">
+        <ul></ul>
+      </div>
+    </div>
+
+    <div class="zoneDeJeu">
+        <div class="points">Points :&nbsp;<span>0</span></div>
+        <div class="timer"></div>
+        <div class="message">yo</div>
+        <div class="jeVeux">
+          <img src="img/RECETTE1.png" width="32px">
+        </div>
+        
+        <div class="personnage">
+          <img src="img/NOTHING.png" class="ingPris">
+          <img class="spritePersonnage" src="img/PLAYER.png" alt="player">
+        </div>
+        
+        <img src="img/UNDERCOOKED_BACKGROUND.png" alt="Background" class="background bg-zdj">
+
+        <div data-type="ingredient" class="MEAT">
+          <img class="sprite" src="img/MEAT.png" alt="meat">
+        </div>
+        
+
+        <div data-type="ingredient" class="VEGETABLES">
+          <img class="sprite" src="img/VEGETABLES.png" alt="vegetables">
+        </div>
+
+        <div data-type="ingredient" class="POTATO">
+          <img class="sprite" src="img/POTATO.png" alt="potato">
+        </div>
+
+        <div data-type="demande" class="demandes">
+          <img class="sprite" src="img/SERVE.png" alt="serve">
+          <div></div>
+        </div>
+
+        <div data-type="poubelle" class="poubelle">
+          <img class='sprite' src="img/TRASH CAN.png" alt="trash can">
+        </div>
+
+        <div data-type="cuisine" class="cuisine">
+          <img class='sprite' src="img/COOKING POT.png" alt="trash can">
+          <div></div>
+        </div>
+    </div>
+  </div>
+        
+    <script src="scripts/script.js"></script>
 </body>
 </html>
