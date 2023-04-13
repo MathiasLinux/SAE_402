@@ -1,0 +1,285 @@
+html, body{
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.fullScreen{
+    background-color: #1E212B;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    position: fixed;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.accueil{
+    position: absolute;
+    background-color: black;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    color: white;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.accueil>p>img{
+    width: 24px;
+    height: 24px;
+}
+
+.accueil>p, .accueil>div>p{
+    margin: 2px 80px;
+}
+
+.lancerLeJeu{
+    border-style: solid;
+    border-color: white;
+    width: fit-content;
+    padding: 15px;
+}
+
+.gameOver{
+    position: absolute;
+    background-color: black;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    color: white;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.retry{
+    border-style: solid;
+    border-color: white;
+    padding: 15px 25px;
+    text-decoration: none;
+    color:white;
+    display: none;
+}
+
+.background{
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -6;
+}
+
+.ecranDeFin{
+    position: absolute;
+    display: none;
+    transition: 0.5s;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: black;
+    opacity: 80%;
+    color: white;
+    z-index: 10;
+}
+
+.buttonEnd{
+    border-style: solid;
+    border-color: white;
+    padding: 15px 25px;
+    text-decoration: none;
+    color:white;
+    display: none;
+}
+
+.buttonEnd:visited{
+    text-decoration: none;
+    color:white;
+}
+
+.messagePopup{
+    border-style: solid;
+    border-color: black;
+    background-color: grey;
+    color: white;
+    display: none;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    height: 50px;
+    width: 120px;
+    top: 50%;
+    left: 50%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 3;
+}
+
+.attaques{
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 95%;
+    z-index: -5;
+    overflow: hidden;
+}
+
+.atk{
+    position: absolute;
+    background-color: brown;
+    border-radius: 100px;
+    width: 20px;
+    height: 20px;
+    transform: translateX(0);
+    z-index: 1;
+}
+
+.atkD{
+    transform: translateX(120vw);
+    transition: 1.2s;
+}
+
+.coolosPlante{
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    transform: translateY(-10px);
+}
+
+.bustHP{
+    display: flex;
+    align-items: center;
+    font-size: 22pt;
+    text-align: center;
+}
+
+.bust{
+    width: 64px;
+    height: 64px;
+}
+
+
+.mobs{
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -5;
+    overflow: hidden;
+}
+
+.mobs>div{
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.mob{
+    width: 30px;
+    height: 30px;
+    transform: translateX(110vw);
+    z-index: 5;
+}
+
+.mob>img{
+    width: 64px;
+    height: 64px;
+    transform: translate(-50%, -20%);
+}
+
+.mobD{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    transition: var(--vitesse);
+    transition-timing-function: linear;
+    transform: translateX(0);
+}
+
+.zoneDeJeu{
+    height: 100%;
+    width: 95%;
+    z-index: -3;
+    overflow: hidden;
+    
+}
+
+.immenseGrid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    z-index: 2;
+    /* background-image: url("../img/SENTEURS_BACKGROUND.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    overflow: hidden; */
+}
+
+.immenseGrid>div:not(img){
+    height: 50px;
+    width: auto;
+    transition: 0.3s;
+    margin: 2px;
+    border-radius: 24px;
+}
+
+.choisisUnEndroit{
+    background-color: #09C;
+    opacity: 0.5;
+}
+
+.bottomScreen{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.money{
+    background-color: gold;
+    width: 20px;
+    height: 20px;
+    border-radius: 500px;
+    padding: 10px;
+    text-align: center;
+}
+
+.kills{
+    background-color: red;
+    width: 20px;
+    height: 20px;
+    border-radius: 500px;
+    padding: 10px;
+    text-align: center;
+}
+
+.menuPlantes{
+    display: flex;
+}
+
+.menuPlantes>div{
+    display:flex;
+    width: 200px;
+    flex-direction: column;
+    background-color: white;
+    text-align: center;
+    border-style: solid;
+    border-color: black;
+    border-width: 6px;
+    margin: 5px;
+    transition: 0.2s;
+}
+
+.menuPlantes>div>p{
+    margin: 0;
+}
