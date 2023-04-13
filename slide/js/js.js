@@ -7,6 +7,7 @@ gearImage.src = 'Img/RoueMulhouse.png';
 const lineImage = new Image();
 lineImage.src = 'Img/Laine.png';
 const startButton = document.getElementById("startButton");
+
 gearImage.addEventListener('load', () => {
   // Le code pour commencer le jeu peut être placé ici, par exemple :
   startButton.addEventListener("click", () => {
@@ -159,6 +160,7 @@ class Gear {
       this.y += this.speedY;
       this.checkCollisionWithLines();
       this.checkCollisionWithHorizontalLines();
+    
   //QUAN L"UTILISATEUR GAGNE
       if (this.y + this.radius >= basket.y - basket.radius && basket.isInside(this)) {
         console.log("Partie gagnée !");
@@ -170,12 +172,20 @@ class Gear {
     } else {
       this.y -= 0.25;
     }
-  
-  }
+    if (this.y > canvas.height + this.radius) {
+      console.log("Fin de partie");
+      gameStarted = false;
+      showRestartButton();
+      return;
+    }
+     }
   draw() {
     ctx.drawImage(gearImage, this.x - this.radius, this.y - this.radius, this.radius * 2, this.radius * 2);
   }
   checkCollisionWithLines() {
+    let onVerticalLine = false;
+    let onHorizontalLine = false;
+
     for (const line of lines) {
       for (const gap of line.gaps) {
         const lineTop = gap.y + line.yOffset - 70;
@@ -187,13 +197,38 @@ class Gear {
           this.x <= line.x + 2
         ) {
           console.log("Fin de partie");
-          // 2. Modifiez la méthode `checkCollisionWithLines()` pour détecter si le joueur est tombé dans un trou et geler le jeu.
           gameStarted = false;
           showRestartButton();
         }
+        if (this.x >= line.x - 2 && this.x <= line.x + 2) {
+          onVerticalLine = true;
+        }
+        if (this.y + this.radius * 0.5 >= lineTop && this.y - this.radius * 0.5 <= lineBottom) {
+          onHorizontalLine = true;
+        }
       }
     }
+
+    if (!onVerticalLine && !onHorizontalLine) {
+      this.snapToClosestLine();
+    }
   }
+
+  snapToClosestLine() {
+    let closestLine = null;
+    let closestDistance = Infinity;
+
+    for (const line of lines) {
+      const distance = Math.abs(this.x - line.x);
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestLine = line;
+      }
+    }
+
+    this.x = closestLine.x;
+  }
+
   
 
   checkCollisionWithHorizontalLines() {
@@ -298,32 +333,24 @@ if (isMobile()) {
   alert("Ce jeu ne fonctionne que sur les téléphones mobiles.");
 }
 
-canvas.addEventListener("mousedown", (e) => {
-  const x = e.clientX;
-  const y = e.clientY;
-  if (
-    x >= gear.x - gear.radius &&
-    x <= gear.x + gear.radius &&
-    y >= gear.y - gear.radius &&
-    y <= gear.y + gear.radius
-  ) {
-    gear.onGround = !gear.onGround;
-  }
-});
+function distanceToLine(gear, line) {
+  return Math.abs(gear.x - line.x);
+}
 
-canvas.addEventListener("touchstart", (e) => {
-  e.preventDefault();
-  const x = e.touches[0].clientX;
-  const y = e.touches[0].clientY;
-  if (
-    x >= gear.x - gear.radius &&
-    x <= gear.x + gear.radius &&
-    y >= gear.y - gear.radius &&
-    y <= gear.y + gear.radius
-  ) {
-    gear.onGround = !gear.onGround;
+function moveToClosestLine(gear, lines) {
+  let closestLine = lines[0];
+  let minDistance = distanceToLine(gear, closestLine);
+
+  for (let i = 1; i < lines.length; i++) {
+    const distance = distanceToLine(gear, lines[i]);
+    if (distance < minDistance) {
+      minDistance = distance;
+      closestLine = lines[i];
+    }
   }
-});
+
+  gear.x = closestLine.x;
+}
 
 function isInsideVerticalLines(x) {
   return (
@@ -426,12 +453,14 @@ gameLoop();
 
 function createRestartButton() {
   const button = document.createElement("button");
-  button.innerText = "Recommencer";
+  button.innerText = "Restart";
 
   button.style="font-size: 18pt;background: #FEAD4F;padding: 10px;border-radius: 10px;position: absolute; left: 54%;top: 50%;transform: translate(-50%,50%); display: none;"
   button.addEventListener("click", () => {
     button.style.display = "none";
     resetGame();
+    location.reload(); // Recharge la page
+
   });
   document.body.appendChild(button);
   return button;
