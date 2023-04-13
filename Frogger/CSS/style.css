@@ -1,0 +1,10 @@
+body{
+  background-color: rgb(39, 128, 64);
+  display: flex;
+  justify-content: center;
+}
+
+canvas{
+  background-color: black;
+  border: 1px solid green;
+}

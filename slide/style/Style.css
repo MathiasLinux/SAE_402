@@ -1,0 +1,75 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background-image: url(../Img/Back.png);
+    background-repeat: no-repeat; /* Empêche l'image de fond de se répéter */
+    background-size: cover; /* Redimensionne l'image pour couvrir toute la surface */
+    background-position: center; /* Centre l'image de fond */
+    width: 100vw; /* Largeur : 100% de la largeur du viewport */
+    height: 100vh; /* Hauteur : 100% de la hauteur du viewport */
+    background-color: #270040;
+    position: relative;
+  }
+  canvas {
+    display: block;
+  }
+  .panier{
+  position: fixed;
+  bottom: 0%;
+  left: 41%;
+  right: 50%;
+  z-index: 10;
+
+  }
+
+.panier>img{
+  width: auto;
+}
+
+p{
+    z-index: 50;
+    position: absolute;
+    bottom: 20%;
+
+    background-color: rgb(199, 190, 190);
+    font-size: 20pt;
+    text-align: center;
+    border-radius: 10px;
+    height: max-content;
+}
+#startButton{
+    position: fixed;
+    top: 40%;
+    left: 28%;
+    border-radius: 10px;
+    background-color: #FEAD4F;
+    color: black;
+    font-size: 24pt;
+}
+
+#victoryMessage {
+    display: none;
+    color: green;
+    z-index: 13;
+    position: absolute;
+    top: 40%;
+    left: 14%;
+    font-size: 24pt;
+    background: #FEAD4F;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#gameOverMessage {
+    display: none;
+    color: red;
+    z-index: 13;
+    position: absolute;
+    top: 40%;
+    left: 28%;
+    font-size: 24pt;
+    background: #FEAD4F;
+    padding: 10px;
+    transition: 0.2s;
+    border-radius: 10px;
+}

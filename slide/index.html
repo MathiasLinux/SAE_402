@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exemple de jeu</title>
+  <link rel="stylesheet" href="style/Style.css">
+</head>
+<body>
+  <button id="startButton">Commencer</button>
+  <p>
+    The aim of the game is simple. <br>
+  You have to drop the gear into the basket but holes block it, <br>
+  Draw horizontal lines between the vertical lines to dodge the holes!
+  </p>
+
+  <canvas id="gameCanvas" style="touch-action: none;"></canvas>
+  <div class="panier">
+    <img src="Img/panier.svg" alt="panier">
+  </div>
+  <div id="victoryMessage">Vous avez gagné !</div>
+  <div id="gameOverMessage">Game over !</div>
+  <script src="JS/js.js"></script>
+</body>
+</html>
