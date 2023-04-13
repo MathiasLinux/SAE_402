@@ -55,8 +55,8 @@ const text = [
             "change": true,
             "launchGame": false,
             "multipleChoice": false,
-            "x": 47.75145807779052,
-            "y": 7.328997498261512,
+            "x": 47.75141453559487,
+            "y": 7.329077854384049,
             "icon_name": "market",
         }],
     [
@@ -146,8 +146,8 @@ const text = [
             "change": true,
             "launchGame": false,
             "multipleChoice": false,
-            "x": 47.745,
-            "y": 7.336,
+            "x": 47.747609039899515,
+            "y": 7.333212040755092,
             "icon_name": "garden",
         }
     ],
@@ -203,8 +203,8 @@ const text = [
             "change": true,
             "launchGame": false,
             "multipleChoice": false,
-            "x": 47.744,
-            "y": 7.336,
+            "x": 47.74438854752061,
+            "y": 7.335557023628573,
             "icon_name": "water",
         }
     ],
@@ -769,8 +769,8 @@ const text = [
             "change": true,
             "launchGame": false,
             "multipleChoice": false,
-            "x": 47.748,
-            "y": 7.337,
+            "x": 47.74825411625024,
+            "y": 7.336777208156438,
             "icon_name": "horizonVertical",
         }
     ],

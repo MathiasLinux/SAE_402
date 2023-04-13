@@ -8,15 +8,20 @@ const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
+const geo = navigator.geolocation;
+
 function onLocationFound(e) {
     const locationMarker = L.marker(e.latlng).addTo(map)
     document.querySelector(".dialogue").style.display = "block";
-
+    if (locationMarker != null) {
+        geo.watchPosition(function (position) {
+            let lat = position.coords.latitude;
+            let lon = position.coords.longitude;
+            locationMarker.setLatLng([lat, lon]);
+            map.setView([lat, lon]);
+        });
+    }
 }
-
-//TODO : Make a function to move the marker with the user
-
-const geo = navigator.geolocation;
 
 function deg2rad(userLat) {
     return userLat * (Math.PI / 180)
@@ -40,7 +45,7 @@ function detectUserLocationInRange(x, y) {
             let userLat = position.coords.latitude;
             let userLong = position.coords.longitude;
             let distance = getDistanceFromLatLonInKm(userLat, userLong, x, y);
-            if (distance < 0.02) {
+            if (distance < 0.03) {
                 console.log("in range");
                 inrange = true;
             } else {
