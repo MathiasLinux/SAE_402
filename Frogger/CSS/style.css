@@ -1,0 +1,86 @@
+body{
+  background-color: rgb(39, 128, 64);
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+canvas{
+  background-color: black;
+  border: 1px solid green;
+}
+
+p{
+  z-index: 50;
+  position: absolute;
+  bottom: 20%;
+  padding: 10px;
+  background-color: rgb(199, 190, 190);
+  font-size: 20pt;
+  text-align: center;
+  border-radius: 10px;
+  height: max-content;
+}
+
+#startButton{
+  position: fixed;
+  top: 81%;
+  left: 43%;
+  border-radius: 10px;
+  background-color: #FEAD4F;
+  color: black;
+  font-size: 24pt;
+}
+
+
+#victoryMessage {
+  text-align: center;
+  display: none;
+  color: green;
+  z-index: 50;
+  position: absolute;
+  top: 81%;
+  left: 36%;
+  font-size: 24pt;
+  background: #FEAD4F;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+span{
+  font-size: 13pt;
+}
+
+#gameOverMessage {
+  display: none;
+  color: red;
+  z-index: 13;
+  position: absolute;
+  top: 40%;
+  left: 28%;
+  font-size: 24pt;
+  background: #FEAD4F;
+  padding: 10px;
+  transition: 0.2s;
+  border-radius: 10px;
+}
+
+#restart-btn{
+  position: fixed;
+  top: 81%;
+  left: 43%;
+  border-radius: 10px;
+  background-color: #FEAD4F;
+  color: black;
+  font-size: 24pt;
+}
+
+button{
+  position: fixed;
+  top: 40%;
+  left: 28%;
+  border-radius: 10px;
+  background-color: #FEAD4F;
+  color: black;
+  font-size: 24pt;
+}
