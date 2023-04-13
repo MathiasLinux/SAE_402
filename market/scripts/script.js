@@ -194,7 +194,7 @@ function prendre(ing){
             ingPris.src= "img/" + ing.classList + ".png";
         } else if(contact.dataset.type=="demande"){
             if(cuisine.id==reponse){
-                message("Good job !");
+                message("Good job !", "green");
                 cuisine.removeAttribute("id");
                 cuisineText.innerText = "";
                 pointsTotaux+=pointsPossibles;
