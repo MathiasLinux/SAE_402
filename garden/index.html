@@ -2,13 +2,71 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Garden</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant vs Zombie du pauvre</title>
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-<h1>Garden Game</h1>
-<a href="/main/map.html">Go to next dialog</a>
-<script>
-    document.cookie = "text=4; path=/";
-</script>
+
+    <div class="fullScreen" onclick="fullScreen();">FULLSCREEN</div>
+    
+    <div class="accueil">
+        <h2>BACK TO THE SENTEURS</h2>
+
+        <p><img src="img/bust.png"> goal is to protect the bust from the evil zombies who came back to life.</p>
+        
+        <p><img src="img/coin.png">With money, you can buy plants.</p>
+
+        <p><img src='img/pPlante.png'>Then, you must place plants to take down the zombies. They'll shoot automatically.</p>
+
+        <p><img src='img/zombie.png'>Coins are obtained by taking down zombies. They each give you 5 coins, and you will also gain a coin every 5 seconds (this will be upgraded as the game goes on).</p>
+
+        <p><img src="img/warning.png">Be careful ! The bust can only take 3 hit by the zombies, after what you'll have to retry for the beginning. </p>
+
+        <div class="lancerLeJeu">START THE GAME</div>
+
+    </div>
+
+    <div class="ecranDeFin">
+        <p>The bust has been destroyed !</p>
+        <a href="index.html" class="buttonEnd retry">RETRY</a>
+        <a href="#" class="buttonEnd continue">CONTINUE</a>
+      </div>
+
+    <div class="messagePopup"></div>
+    <div class="zoneDeJeu">  
+            <div class="immenseGrid">
+                <img class="background" src="img/SENTEURS_BACKGROUND.png" alt="Jardin des Senteurs">
+            </div>
+
+        <div class="attaques">
+            
+        </div>
+
+        <div class="mobs">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
+        <div class="bottomScreen">
+            <div class="menuPlantes">
+            
+            </div>
+
+            <div class="money">
+                
+            </div>
+        </div>
+
+        
+    </div>
+
+
+    
+    <script src="scripts/pvz.js"></script>
 </body>
 </html>
