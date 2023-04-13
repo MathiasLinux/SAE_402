@@ -4,7 +4,7 @@ console.log('geoloc.js loaded');
 const map = L.map('map').fitWorld();
 
 const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 20,
+    maxZoom: 18,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 

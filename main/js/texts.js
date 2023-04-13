@@ -978,11 +978,11 @@ const game =
         },
         {
             "name": "water",
-            "url": "/water/index.html",
+            "url": "/Frogger/index.html",
         },
         {
             "name": "townhall",
-            "url": "/townhall/index.html",
+            "url": "/slide/index.html",
         },
         {
             "name": "bollwerk",
