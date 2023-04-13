@@ -25,7 +25,14 @@ var mulhouseLogoX = 310;
 var mulhouseLogoY = 0;
 var victories = 0;
 
+document.querySelector("#startButton").addEventListener("click", up);
 
+function up(){
+    document.querySelector("#startButton").style="display:none;"
+    document.querySelector("#restart-btn").style="display:none;"
+    document.querySelector("p").style="display:none;"
+
+}
 function drawBackground() {
     //Dessiner le fond 
     ctx.fillStyle = "green";
@@ -279,13 +286,15 @@ function checkCollision() {
     if (x + width > mulhouseLogoX && x < mulhouseLogoX + mulhouseLogoWidth &&
         y + height > mulhouseLogoY && y < mulhouseLogoY + mulhouseLogoHeight) {
         victory = true;
-        document.cookie = "text=7; path=/"; 
-        location.href = "/main/map.html";
+        document.getElementById("victoryMessage").style.display="block";
+        document.querySelector("#victoryMessage").addEventListener("click",up2)
         return;
-       
     }
 }
-
+function up2(){
+    document.cookie = "text=7; path=/"; 
+    location.href = "/main/map.html";
+}
 // Ajouter une fonction pour afficher le nombre de vies et le statut du jeu
 function drawGameStatus() {
     ctx.font = "20px Arial";

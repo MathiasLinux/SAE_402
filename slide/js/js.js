@@ -20,8 +20,6 @@ gearImage.addEventListener('load', () => {
   gameLoop();
 });
 
-//document.cookie = "text=14; path=/"; //14 C'est ce qu'il faut pour musicTemple
-//location.href = "/main/map.html";
 
 
 canvas.width = window.innerWidth;
