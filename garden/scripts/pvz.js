@@ -72,7 +72,7 @@ function startTheGame(){
     for(let i=0; i<mobsSpawnTime.length; i++){
         var posRando = Math.floor(Math.random() * (5 - 2) + 2);
     
-        document.querySelector(`.mobs>div:nth-child(${posRando})`).innerHTML += `<div class='mob' id='mob${mobsSpawnTime[i]}' data-pos=${posRando-1}><img src='../img/zombie.png'></div>`;
+        document.querySelector(`.mobs>div:nth-child(${posRando})`).innerHTML += `<div class='mob' id='mob${mobsSpawnTime[i]}' data-pos=${posRando-1}><img src='img/zombie.png'></div>`;
 
     }
     
@@ -109,7 +109,7 @@ for(i=0; i<nbCases; i++){
     cases.innerHTML+=`<div id='case${i}'>`;
 }
 
-document.querySelector('#case30').innerHTML = "<div class='bustHP'><div class='pv'>"+ pv +"</div>/"+ pv +"<img class='bust' src=../img/bust.png></div>";
+document.querySelector('#case30').innerHTML = "<div class='bustHP'><div class='pv'>"+ pv +"</div>/"+ pv +"<img class='bust' src=img/bust.png></div>";
 
 Object.keys(plantes).forEach(e=>{
     menuPlantes.innerHTML += `
@@ -170,7 +170,7 @@ function placePlant(){
                 this.dataset.ouais = plantePrise;
                 this.dataset.plant = true;
                 console.log(this);
-                this.innerHTML = `<img class='coolosPlante' src='../img/${this.dataset.ouais}.png'>`;
+                this.innerHTML = `<img class='coolosPlante' src='img/${this.dataset.ouais}.png'>`;
                 document.querySelectorAll('.immenseGrid>div').forEach(a=>{
                     a.classList.remove('choisisUnEndroit');
                 })
@@ -296,10 +296,17 @@ setInterval(function(){
     })
 }, 100)
 
+document.querySelector(".continue").addEventListener('click', next);
+
 function victory(){
     document.querySelector('.ecranDeFin>p').innerHTML = 'You have defeated all of the zombies !';
     document.querySelector('.ecranDeFin>.continue').style.display = 'block';
     ecranDeFin.style.display = 'flex';
+}
+
+function next(){
+    document.cookie = "text=4; path=/"; //4 -> après jardin des senteurs
+    location.href = "/main/map.html";
 }
 
 function message(texte, color){
