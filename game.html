@@ -6,40 +6,84 @@
     <title>Game select</title>
 </head>
 <style>
-    body {
-        font-size: 35px;
+    h1 {
+        font-size: 30px;
     }
 
-    a {
+    h2 {
+        font-size: 25px;
+    }
+
+    a, button {
         text-decoration: none;
         color: black;
         background-color: #F7B538;
         padding: 20px;
+        border: 0;
+        font-size: 20px;
+    }
+
+    div {
+        display: flex;
+        justify-content: left;
+        margin-top: 20px;
     }
 </style>
 <body>
 <h1>Welcome to the cheat</h1>
-<a href="/bollwerkTower/platformer/index.html">Bollwork Tower</a>
-<br>
-<br>
-<a href="/garden/index.html">Garden</a>
-<br>
-<br>
-<a href="/market/index.html">Undercooked</a>
-<br>
-<br>
-<a href="/musicTemple/index.html">Music Temple</a>
-<br>
-<br>
-<a href="/theMUR/index.html">The M.U.R</a>
-<br>
-<br>
-<a href="/townhall/index.html">Townhall</a>
-<br>
-<br>
-<a href="/water/index.html">Froggys (Water)</a>
-<br>
-<br>
-<a href="/horizonVertical/index.html">Horizon Vertical</a>
+<h2>Direct to the games</h2>
+<div>
+    <a href="/market/index.html">Undercooked (1)</a>
+</div>
+<div>
+    <a href="/garden/index.html">Garden of Scent (2)</a>
+</div>
+<div>
+    <a href="/Frogger/index.html">Frogger (Water) (3)</a>
+</div>
+<div>
+    <a href="/slide/index.html">Slide (Townhall) (4)</a>
+</div>
+<div>
+    <a href="/bollwerkTower/platformer/index.html">Bollwork Tower (5)</a>
+</div>
+<div>
+    <a href="/theMUR/index.html">The M.U.R (6)</a>
+</div>
+<div>
+    <a href="/musicTemple/index.html">Music Temple (7)</a>
+</div>
+<div>
+    <a href="/horizonVertical/index.html">Horizon Vertical (8)</a>
+</div>
+<div>
+    <a href="/europeTower/index.html">Europe Tower (The End) (9)</a>
+</div>
+
+<h2>With the story without moving</h2>
+<div>
+    <button class="launchButton">Click to launch</button>
+</div>
+<div>
+    <button class="clearButton">Clear the cheat</button>
+</div>
+
 </body>
+<script>
+    document.querySelector('.launchButton').addEventListener('click', () => {
+        //create the cookie alwaysInRange
+        document.cookie = "alwaysInRange=true; path=/";
+        window.location.href = '/main/map.html';
+    });
+
+    document.querySelector('.clearButton').addEventListener('click', () => {
+        //delete the cookie alwaysInRange
+        document.cookie = "alwaysInRange=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        //clear the cookie text
+        document.cookie = "text=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        //clear the cookie numberText
+        document.cookie = "numberText=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        window.location.href = '/main/map.html';
+    });
+</script>
 </html>

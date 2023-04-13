@@ -42,6 +42,7 @@ if (getCookie("text") === "" || getCookie("text") === null) {
     }
 }
 
+
 if (numberText >= 5 && numberText < 9) {
     document.querySelector(".topLayerLeft div").innerHTML = "1/4";
 } else if (numberText >= 9 && numberText < 13) {
@@ -51,6 +52,13 @@ if (numberText >= 5 && numberText < 9) {
 } else if (numberText >= 17) {
     document.querySelector(".topLayerLeft div").innerHTML = "4/4";
 }
+
+let alwaysInRange = false
+
+if (getCookie("alwaysInRange") !== "" && getCookie("alwaysInRange") !== null && getCookie("alwaysInRange") === "true") {
+    alwaysInRange = true;
+}
+
 
 document.querySelector(".dialogue").addEventListener("touchstart", nextText)
 
@@ -105,6 +113,17 @@ function nextText(event) {
         });
         const icon = L.marker([x, y], {icon: spotIcon}).addTo(map)
         map.setView([x, y], 16);
+        if (t > 0) {
+            if (text[numberText][t].change === true && alwaysInRange === true) {
+                console.log("change");
+                console.log(t);
+                t = -1;
+                console.log(t);
+                numberText++;
+                document.querySelector(".dialogue").style.display = "block";
+
+            }
+        }
         geo.watchPosition(() => {
             detectUserLocationInRange(x, y)
             console.log(inrange);
