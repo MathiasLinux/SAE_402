@@ -10,7 +10,7 @@ canvas{
   border: 1px solid green;
 }
 
-p{
+.diag{
   z-index: 50;
   position: absolute;
   bottom: 20%;
@@ -30,6 +30,7 @@ p{
   background-color: #FEAD4F;
   color: black;
   font-size: 24pt;
+  z-index: 11;
 }
 
 
@@ -73,6 +74,7 @@ span{
   background-color: #FEAD4F;
   color: black;
   font-size: 24pt;
+  z-index: 11;
 }
 
 button{
@@ -83,4 +85,76 @@ button{
   background-color: #FEAD4F;
   color: black;
   font-size: 24pt;
+  z-index: 11;
+}
+
+/* Déplacement tectile telephone */
+
+.Up{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  z-index: 10;
+  clip-path: polygon(51% 45%, 0 0, 100% 0);
+
+}
+
+.Left{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  z-index: 10;
+  clip-path: polygon(51% 45%, 0 0, 0 100%);
+
+}
+
+.Right{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  z-index: 10;
+  clip-path: polygon(51% 45%, 100% 100%, 100% 0);
+
+}
+
+.Down{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  z-index: 10;
+  clip-path: polygon(51% 45%, 0 100%, 100% 100%);
+
+}
+
+section>img{
+  display: block;
+  z-index: 12;
+
+}
+
+.Up>img{
+  position: absolute;
+  top: 10%;
+  left: 42%;
+}
+
+
+section>.img2{
+  animation: opacity 3s;
+}
+
+
+@keyframes opacity {
+  from{
+    display: block;
+    opacity: 1;
+  }
+  to{
+    display: none;
+    opacity: 0;
+  }
 }

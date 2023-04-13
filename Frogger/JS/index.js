@@ -30,8 +30,9 @@ document.querySelector("#startButton").addEventListener("click", up);
 function up(){
     document.querySelector("#startButton").style="display:none;"
     document.querySelector("#restart-btn").style="display:none;"
-    document.querySelector("p").style="display:none;"
+    document.querySelector(".diag").style="display:none;"
 
+    
 }
 function drawBackground() {
     //Dessiner le fond 
@@ -125,45 +126,58 @@ document.getElementById("restart-btn").addEventListener("click", function() {
     }
 });
 
-canvas.addEventListener("touchstart", function(event) {
+var up = document.querySelector(".Up");
+var left = document.querySelector(".Left");
+var right = document.querySelector(".Right");
+var down = document.querySelector(".Down");
+
+up.addEventListener("touchstart", function (event) {
     if (gameOver) {
         return; // Empêche le mouvement si le jeu est terminé
     }
 
-    
-    var touchX = event.touches[0].clientX;
-    var touchY = event.touches[0].clientY;
-
-    if (touchX > x) {
-        x += 40;
-        angle = Math.PI / 2;
-        if (x + width > canvas.width) {
-            x = canvas.width - width;
-        }
-    } else if (touchX < x) {
-        x -= 40;
-        angle = -Math.PI / 2;
-        if (x < 0) {
-            x = 0;
-        }
-    }
-
-    if (touchY > y) {
-        y += 40;
-        angle = Math.PI;
-        if (y + height > canvas.height) {
-            y = canvas.height - height;
-        }
-    } else if (touchY < y) {
-        y -= 40;
-        angle = 0;
-        if (y < 0) {
-            y = 0;
-        }
+    y -= 40;
+    angle = 0;
+    if (y < 0) {
+        y = 0;
     }
 });
 
+left.addEventListener("touchstart", function (event) {
+    if (gameOver) {
+        return; // Empêche le mouvement si le jeu est terminé
+    }
 
+    x -= 40;
+    angle = -Math.PI / 2;
+    if (x < 0) {
+        x = 0;
+    }
+});
+
+right.addEventListener("touchstart", function (event) {
+    if (gameOver) {
+        return; // Empêche le mouvement si le jeu est terminé
+    }
+
+    x += 40;
+    angle = Math.PI / 2;
+    if (x + width > canvas.width) {
+        x = canvas.width - width;
+    }
+});
+
+down.addEventListener("touchstart", function (event) {
+    if (gameOver) {
+        return; // Empêche le mouvement si le jeu est terminé
+    }
+
+    y += 40;
+    angle = Math.PI;
+    if (y + height > canvas.height) {
+        y = canvas.height - height;
+    }
+});
 // Fonction pour créer un rondin
 function createLog(line, position) {
     var log = {
