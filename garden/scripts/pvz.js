@@ -3,11 +3,10 @@ function resizeWindow(){
     h = window.innerHeight;
     document.querySelector("body").style.width=w+"px";
     document.querySelector("body").style.height=h+"px";
-    defDiametre();
 }
 
 function fullScreen(){
-    let elem = document.querySelector("main")
+    let elem = document.querySelector("body")
     if (elem.requestFullscreen) {
         elem.requestFullscreen();
         } else if (elem.webkitRequestFullscreen) { /* Safari */
